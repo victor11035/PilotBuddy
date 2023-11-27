@@ -2,7 +2,6 @@
 class Plane {
   
   float planeSpeed;
-  float planeAccelleration;
   float minSpeed;
   float maxSpeed;
   
@@ -19,12 +18,11 @@ class Plane {
   boolean takeoff;
   int takeoffTime
   
-  plane(float pS,float pA, float min, float max, float  pY, float pX) {
+  plane(float pS, float min, float max, float  pY, float pX) {
     this.planeWidth = 75;
     this.planeHeight = 25;
     
     this.planeSpeed = pS;
-    this.planeAcceleration = pA;
     this.minSpeed = min;
     this.maxSpeed = max;
     
