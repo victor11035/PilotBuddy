@@ -19,7 +19,7 @@ class Plane {
   boolean takeoff;
   int takeoffTime
   
-  car(float pS,float pA, float min, float max, float  pY, float pX) {
+  plane(float pS,float pA, float min, float max, float  pY, float pX) {
     this.planeWidth = 75;
     this.planeHeight = 25;
     
@@ -37,8 +37,9 @@ class Plane {
   
   void drawPlane() {
     
-    if(!(this.takeoff)) {
-      this.planeColor = lerpColor(gray,yellow,this.planeSpeed/this.maxSpeed);
-    }else {
-      this.planeColor = white;
-    
+    this.planeColor = white;
+    translate(this.planeX, this.planeY);
+    fill(planeColour);
+    stroke(planeColour)
+  }
+  

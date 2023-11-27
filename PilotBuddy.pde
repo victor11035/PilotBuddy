@@ -4,3 +4,4 @@ void setup(){
   println("");
   print("Hello there");
 }
+void draw(){
