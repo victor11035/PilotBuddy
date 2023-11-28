@@ -14,17 +14,17 @@
  * =========================================================
  */
 
-public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:Planes_Weight:334404:
+public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
   println("Planes_Weight - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:Planes_Weight:334404:
+} //_CODE_:Weight:334404:
 
 public void textfield1_change1(GTextField source, GEvent event) { //_CODE_:textfield1:234657:
   println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:textfield1:234657:
 
-public void custom_slider1_change2(GCustomSlider source, GEvent event) { //_CODE_:custom_slider1:624276:
+public void custom_slider1_change2(GCustomSlider source, GEvent event) { //_CODE_:Thrust:624276:
   println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:custom_slider1:624276:
+} //_CODE_:Thrust:624276:
 
 public void textfield2_change1(GTextField source, GEvent event) { //_CODE_:textfield2:481766:
   println("textfield2 - GTextField >> GEvent." + event + " @ " + millis());
@@ -34,25 +34,25 @@ public void textfield3_change1(GTextField source, GEvent event) { //_CODE_:textf
   println("textfield3 - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:textfield3:454773:
 
-public void custom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:custom_slider2:271983:
+public void custom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:Drag:271983:
   println("custom_slider2 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:custom_slider2:271983:
+} //_CODE_:Drag:271983:
 
 public void textfield4_change1(GTextField source, GEvent event) { //_CODE_:textfield4:996104:
   println("textfield4 - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:textfield4:996104:
 
-public void custom_slider3_change1(GCustomSlider source, GEvent event) { //_CODE_:custom_slider3:416810:
+public void custom_slider3_change1(GCustomSlider source, GEvent event) { //_CODE_:Efficiciency:416810:
   println("custom_slider3 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:custom_slider3:416810:
+} //_CODE_:Efficiciency:416810:
 
 public void textfield5_change1(GTextField source, GEvent event) { //_CODE_:textfield5:682614:
   println("textfield5 - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:textfield5:682614:
 
-public void custom_slider4_change1(GCustomSlider source, GEvent event) { //_CODE_:custom_slider4:838236:
+public void custom_slider4_change1(GCustomSlider source, GEvent event) { //_CODE_:Velocity:838236:
   println("custom_slider4 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:custom_slider4:838236:
+} //_CODE_:Velocity:838236:
 
 
 
@@ -63,19 +63,19 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  Planes_Weight = new GCustomSlider(this, 80, 20, 100, 40, "grey_blue");
-  Planes_Weight.setLimits(0.5, 0.0, 1.0);
-  Planes_Weight.setNumberFormat(G4P.DECIMAL, 2);
-  Planes_Weight.setOpaque(false);
-  Planes_Weight.addEventHandler(this, "custom_slider1_change1");
+  Weight = new GCustomSlider(this, 80, 20, 100, 40, "grey_blue");
+  Weight.setLimits(0.5, 0.0, 1.0);
+  Weight.setNumberFormat(G4P.DECIMAL, 2);
+  Weight.setOpaque(false);
+  Weight.addEventHandler(this, "custom_slider1_change1");
   textfield1 = new GTextField(this, 0, 20, 80, 40, G4P.SCROLLBARS_NONE);
   textfield1.setOpaque(true);
   textfield1.addEventHandler(this, "textfield1_change1");
-  custom_slider1 = new GCustomSlider(this, 80, 80, 100, 40, "grey_blue");
-  custom_slider1.setLimits(0.5, 0.0, 1.0);
-  custom_slider1.setNumberFormat(G4P.DECIMAL, 2);
-  custom_slider1.setOpaque(false);
-  custom_slider1.addEventHandler(this, "custom_slider1_change2");
+  Thrust = new GCustomSlider(this, 80, 80, 100, 40, "grey_blue");
+  Thrust.setLimits(0.5, 0.0, 1.0);
+  Thrust.setNumberFormat(G4P.DECIMAL, 2);
+  Thrust.setOpaque(false);
+  Thrust.addEventHandler(this, "custom_slider1_change2");
   textfield2 = new GTextField(this, 0, 80, 80, 40, G4P.SCROLLBARS_NONE);
   textfield2.setOpaque(true);
   textfield2.addEventHandler(this, "textfield2_change1");
@@ -94,11 +94,11 @@ public void createGUI(){
   textfield3 = new GTextField(this, 0, 140, 80, 40, G4P.SCROLLBARS_NONE);
   textfield3.setOpaque(true);
   textfield3.addEventHandler(this, "textfield3_change1");
-  custom_slider2 = new GCustomSlider(this, 80, 140, 100, 40, "grey_blue");
-  custom_slider2.setLimits(0.5, 0.0, 1.0);
-  custom_slider2.setNumberFormat(G4P.DECIMAL, 2);
-  custom_slider2.setOpaque(false);
-  custom_slider2.addEventHandler(this, "custom_slider2_change1");
+  Drag = new GCustomSlider(this, 80, 140, 100, 40, "grey_blue");
+  Drag.setLimits(0.5, 0.0, 1.0);
+  Drag.setNumberFormat(G4P.DECIMAL, 2);
+  Drag.setOpaque(false);
+  Drag.addEventHandler(this, "custom_slider2_change1");
   textfield4 = new GTextField(this, 0, 200, 80, 40, G4P.SCROLLBARS_NONE);
   textfield4.setOpaque(true);
   textfield4.addEventHandler(this, "textfield4_change1");
@@ -106,11 +106,11 @@ public void createGUI(){
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label3.setText("Wing Efficiciency");
   label3.setOpaque(false);
-  custom_slider3 = new GCustomSlider(this, 80, 200, 100, 40, "grey_blue");
-  custom_slider3.setLimits(0.5, 0.0, 1.0);
-  custom_slider3.setNumberFormat(G4P.DECIMAL, 2);
-  custom_slider3.setOpaque(false);
-  custom_slider3.addEventHandler(this, "custom_slider3_change1");
+  Efficiciency = new GCustomSlider(this, 80, 200, 100, 40, "grey_blue");
+  Efficiciency.setLimits(0.5, 0.0, 1.0);
+  Efficiciency.setNumberFormat(G4P.DECIMAL, 2);
+  Efficiciency.setOpaque(false);
+  Efficiciency.addEventHandler(this, "custom_slider3_change1");
   label4 = new GLabel(this, 0, 240, 180, 20);
   label4.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label4.setText("Maximum Velocity");
@@ -118,27 +118,27 @@ public void createGUI(){
   textfield5 = new GTextField(this, 0, 260, 80, 40, G4P.SCROLLBARS_NONE);
   textfield5.setOpaque(true);
   textfield5.addEventHandler(this, "textfield5_change1");
-  custom_slider4 = new GCustomSlider(this, 75, 260, 100, 40, "grey_blue");
-  custom_slider4.setLimits(0.5, 0.0, 1.0);
-  custom_slider4.setNumberFormat(G4P.DECIMAL, 2);
-  custom_slider4.setOpaque(false);
-  custom_slider4.addEventHandler(this, "custom_slider4_change1");
+  Velocity = new GCustomSlider(this, 80, 260, 100, 40, "grey_blue");
+  Velocity.setLimits(0.5, 0.0, 1.0);
+  Velocity.setNumberFormat(G4P.DECIMAL, 2);
+  Velocity.setOpaque(false);
+  Velocity.addEventHandler(this, "custom_slider4_change1");
 }
 
 // Variable declarations 
 // autogenerated do not edit
-GCustomSlider Planes_Weight; 
+GCustomSlider Weight; 
 GTextField textfield1; 
-GCustomSlider custom_slider1; 
+GCustomSlider Thrust; 
 GTextField textfield2; 
 GLabel label1; 
 GLabel label1; 
 GLabel label2; 
 GTextField textfield3; 
-GCustomSlider custom_slider2; 
+GCustomSlider Drag; 
 GTextField textfield4; 
 GLabel label3; 
-GCustomSlider custom_slider3; 
+GCustomSlider Efficiciency; 
 GLabel label4; 
 GTextField textfield5; 
-GCustomSlider custom_slider4; 
+GCustomSlider Velocity; 
