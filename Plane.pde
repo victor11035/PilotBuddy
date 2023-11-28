@@ -1,43 +1,43 @@
 //plane Class//
-class Plane {
+//class Plane {
   
-  float planeSpeed;
-  float minSpeed;
-  float maxSpeed;
+//  float planeSpeed;
+//  float minSpeed;
+//  float maxSpeed;
   
-  float planeY;
-  float planeX;
-  color planeColor;
+//  float planeY;
+//  float planeX;
+//  color planeColor;
   
-  float planewidth;
-  float planeWing;
-  float Aerodynamics;
-  //float gravity;
-  float planePitch;
+//  float planewidth;
+//  float planeWing;
+//  float Aerodynamics;
+//  //float gravity;
+//  float planePitch;
 
-  boolean takeoff;
-  int takeoffTime
+//  boolean takeoff;
+//  int takeoffTime
   
-  plane(float pS, float min, float max, float  pY, float pX) {
-    this.planeWidth = 75;
-    this.planeHeight = 25;
+//  plane(float pS, float min, float max, float  pY, float pX) {
+//    this.planeWidth = 75;
+//    this.planeHeight = 25;
     
-    this.planeSpeed = pS;
-    this.minSpeed = min;
-    this.maxSpeed = max;
+//    this.planeSpeed = pS;
+//    this.minSpeed = min;
+//    this.maxSpeed = max;
     
-    this.planeY = cY;
-    this.plane = cX;
+//    this.planeY = cY;
+//    this.plane = cX;
   
-    this.takeoff = false;
-    this.takeoffTime = 0;
-  }
+//    this.takeoff = false;
+//    this.takeoffTime = 0;
+//  }
   
-  void drawPlane() {
+//  void drawPlane() {
     
-    this.planeColor = white;
-    translate(this.planeX, this.planeY);
-    fill(planeColour);
-    stroke(planeColour)
-  }
+//    this.planeColor = white;
+//    translate(this.planeX, this.planeY);
+//    fill(planeColour);
+//    stroke(planeColour)
+//  }
   
