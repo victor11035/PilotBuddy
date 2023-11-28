@@ -9,7 +9,7 @@ void setup(){
   
   
   //(float pS, float min, float max, float  pY, float pX, pW, pH)
-  stanleysPlane = new Plane(10,2,20,400,600,40,10);
+  stanleysPlane = new Plane(10,2,20,550,600,60,25);
 }
 void draw(){
   fill(100,100,105);
