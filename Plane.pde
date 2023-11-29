@@ -8,9 +8,9 @@ class Plane {
   
   float planeY;
   float planeX;
-  color planeColor;
+  float planeM;
   
-  float planewidth;
+
   float planeWing;
   float Aerodynamics;
   //float gravity;
