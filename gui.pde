@@ -15,7 +15,7 @@
  */
 
 public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
-  println("Planes_Weight - GCustomSlider >> GEvent." + event + " @ " + millis());
+ ;
 } //_CODE_:Weight:334404:
 
 public void textfield1_change1(GTextField source, GEvent event) { //_CODE_:weight_text:234657:
