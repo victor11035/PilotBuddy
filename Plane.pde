@@ -49,6 +49,12 @@ class Plane {
     if(planeX > 600) {
       planeX += 1;
       planeY -= 1;
-    } 
+      println("hi");
+    }
+    
+  }
+  
+  void takeOffFail() {
+    
   }
 }
