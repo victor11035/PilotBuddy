@@ -39,6 +39,7 @@ class Plane {
     
     fill(255,255,255);
     ellipse (planeX,planeY,planeWidth,planeHeight);
-    
+    ellipse (planeX,planeY,planeWidth/3,planeHeight/3);
+   
   }
 }
