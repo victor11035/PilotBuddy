@@ -19,6 +19,7 @@ void draw(){
   rect(0,575,1500,600);
   
   stanleysPlane.drawPlane();
+  stanleysPlane.takeOff();
    
   
 }

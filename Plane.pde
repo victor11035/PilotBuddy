@@ -13,6 +13,7 @@ class Plane {
   float planeHeight;
   float planeWing;
   float Aerodynamics;
+  boolean planeFlyingSuccesfully = true;
   //float gravity;
   //float planePitch;
 
@@ -41,5 +42,19 @@ class Plane {
     ellipse (planeX,planeY,planeWidth,planeHeight);
     ellipse (planeX,planeY,planeWidth/3,planeHeight/3);
    
+  }
+  
+  void takeOff() {
+    planeX += 5;
+    if(planeX > 600) {
+      planeX += 1;
+      planeY -= 1;
+      println("hi");
+    }
+    
+  }
+  
+  void takeOffFail() {
+    
   }
 }
