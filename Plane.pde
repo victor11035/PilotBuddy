@@ -2,44 +2,59 @@
 class Plane {
   
   float planeSpeed;
-  float planeAccelleration;
   float minSpeed;
   float maxSpeed;
   
   float planeY;
   float planeX;
-  float planeM;
+  color planeColor;
   
-
+  float planeWidth;
+  float planeHeight;
   float planeWing;
   float Aerodynamics;
+  boolean planeFlyingSuccesfully = true;
   //float gravity;
-  float planePitch;
+  //float planePitch;
 
-  boolean takeoff;
-  int takeoffTime
+  //boolean takeoff;
+  //int takeoffTime
   
-  plane(float pS,float pA, float min, float max, float  pY, float pX) {
-    this.planeWidth = 75;
-    this.planeHeight = 25;
+  Plane(float pS, float min, float max, float  pY, float pX, float pW, float pH) {
+    this.planeWidth = pW;
+    this.planeHeight = pH;
     
     this.planeSpeed = pS;
-    this.planeAcceleration = pA;
     this.minSpeed = min;
     this.maxSpeed = max;
     
-    this.planeY = cY;
-    this.plane = cX;
+    this.planeY = pY;
+    this.planeX = pX;
   
-    this.takeoff = false;
-    this.takeoffTime = 0;
-  }
+    //this.takeoff = false;
+    //this.takeoffTime = 0;
+  
+}
   
   void drawPlane() {
     
-    this.planeColor = white;
-    translate(this.planeX, this.planeY);
-    fill(planeColour);
-    stroke(planeColour)
+    fill(255,255,255);
+    ellipse (planeX,planeY,planeWidth,planeHeight);
+    ellipse (planeX,planeY,planeWidth/3,planeHeight/3);
+   
   }
   
+  void takeOff() {
+    planeX += 5;
+    if(planeX > 600) {
+      planeX += 1;
+      planeY -= 1;
+      println("hi");
+    }
+    
+  }
+  
+  void takeOffFail() {
+    
+  }
+}
