@@ -3,13 +3,13 @@ PVector climbingPlaneVelocity(float thrust, float mass, float climbAngle, PVecto
   if(sqrt(pow(prevVel.x, 2) + pow(prevVel.y, 2)) < maxSpeed){ //check if plane has exceeded maximum speed
     PVector acceleration = new PVector();
     
-    float aoa = climbAngle + arcsin((mass*9.81*sin(climbAngle+(PI/4)))/(thrust)); //calculate the angle of attack of the plane
+    float aoa = climbAngle + asin((mass*9.81*sin(climbAngle+(PI/4)))/(thrust)); //calculate the angle of attack of the plane
     
     acceleration.x = (thrust*cos(aoa))/mass; //calculate acceleration values baased on angle of attack
     acceleration.y = (thrust*sin(climbAngle))/mass;
     
     velocity.x = prevVel.x + acceleration.x;//Add acceleration values to previous velocities
-    veloxity.y = prevVel.y + acceleration.y;
+    velocity.y = prevVel.y + acceleration.y;
     return velocity;
   } else {
     return prevVel;
