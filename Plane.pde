@@ -11,7 +11,6 @@ class Plane {
   
   float planeWidth;
   float planeHeight;
-  float planeWing;
   float Aerodynamics;
   //float gravity;
   //float planePitch;
@@ -19,13 +18,9 @@ class Plane {
   //boolean takeoff;
   //int takeoffTime
   
-  Plane(float pS, float min, float max, float  pY, float pX, float pW, float pH) {
+  Plane(, float  pY, float pX, float pW, float pH) {
     this.planeWidth = pW;
     this.planeHeight = pH;
-    
-    this.planeSpeed = pS;
-    this.minSpeed = min;
-    this.maxSpeed = max;
     
     this.planeY = pY;
     this.planeX = pX;
