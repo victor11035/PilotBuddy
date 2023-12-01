@@ -1,20 +1,20 @@
-//PVector climbingPlaneVelocity(float thrust, float mass, float climbAngle, PVector prevVel, float maxSpeed){ //all angles in radians
-//  PVector velocity = new PVector();
-//  if(sqrt(pow(prevVel.x, 2) + pow(prevVel.y, 2)) < maxSpeed){ //check if plane has exceeded maximum speed
-//    PVector acceleration = new PVector();
+PVector climbingPlaneVelocity(float thrust, float mass, float climbAngle, PVector prevVel, float maxSpeed){ //all angles in radians
+  PVector velocity = new PVector();
+  if(sqrt(pow(prevVel.x, 2) + pow(prevVel.y, 2)) < maxSpeed){ //check if plane has exceeded maximum speed
+    PVector acceleration = new PVector();
     
-//    float aoa = climbAngle + arcsin((mass*9.81*sin(climbAngle+(PI/4)))/(thrust)); //calculate the angle of attack of the plane
+    float aoa = climbAngle + asin((mass*9.81*sin(climbAngle+(PI/4)))/(thrust)); //calculate the angle of attack of the plane
     
-//    acceleration.x = (thrust*cos(aoa))/mass; //calculate acceleration values baased on angle of attack
-//    acceleration.y = (thrust*sin(climbAngle))/mass;
+    acceleration.x = (thrust*cos(aoa))/mass; //calculate acceleration values baased on angle of attack
+    acceleration.y = (thrust*sin(climbAngle))/mass;
     
-//    velocity.x = prevVel.x + acceleration.x;//Add acceleration values to previous velocities
-//    veloxity.y = prevVel.y + acceleration.y;
-//    return velocity;
-//  } else {
-//    return prevVel;
-//  }
-//} //this is WRONG. New equations are needed.
+    velocity.x = prevVel.x + acceleration.x;//Add acceleration values to previous velocities
+    velocity.y = prevVel.y + acceleration.y;
+    return velocity;
+  } else {
+    return prevVel;
+  }
+} //this is WRONG. New equations are needed.
 
 float runwayPlaneVelocity(float prevVel, float thrust, float dragCo, float crossArea, float maxVel, float mass) { // determine velocity when on runway
   //PVector velocity = new PVector();
