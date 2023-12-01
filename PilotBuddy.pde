@@ -1,8 +1,10 @@
 Plane stanleysPlane;
+import g4p_controls.*;
 
 
 void setup(){
   size(1500,600);
+  createGUI();
   println("Welcome pilots");
   println("");
   print("Hello there");
