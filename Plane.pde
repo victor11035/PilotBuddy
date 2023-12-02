@@ -28,7 +28,7 @@ class Plane {
 }
   
   void drawPlane() {
-    fill(255);
+    noStroke();
     float seconds = framesToSeconds();
     PVector position = calculatePosition(3.4, seconds);
     float xPixel = metersToPixels(position.x);
@@ -36,7 +36,16 @@ class Plane {
     float slope = (position.y - positionPrev.y) / (position.x - positionPrev.x);
     float theta = atan(slope);
     positionPrev = position;
-    rect(xPixel, 570 - yPixel, 20, 20);
+    fill(0);
+    ellipse(xPixel+20, 580-yPixel, 20, 20);
+    fill(255);
+    ellipse(xPixel, 570-yPixel, 100, 20);
+    beginShape();
+    vertex(xPixel-20, 570-yPixel);
+    vertex(xPixel-50, 570-yPixel);
+    vertex(xPixel-50, 540-yPixel);
+    vertex(xPixel-40, 540-yPixel);
+    endShape(CLOSE);
    
   }
  
