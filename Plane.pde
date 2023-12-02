@@ -24,7 +24,6 @@ class Plane {
     this.planeHeight = pH;
     
 
-    this.maxVel = max;
     
     this.planeY = pY;
     this.planeX = pX;
