@@ -14,7 +14,7 @@
 // * =========================================================
 // */
 
-<<<<<<<
+
 //public void Weight_Changed(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
 //  println("Weight - GCustomSlider >> GEvent." + event + " @ " + millis());
 //} //_CODE_:Weight:334404:
