@@ -12,8 +12,7 @@ void setup(){
 
 }
 void draw() {
-  fill(100,100,105);
-  background(0,0,100,1500);
+  background(0, 100, 150);
   myPlane.drawPlane();
  
 }
