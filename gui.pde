@@ -14,9 +14,15 @@
 // * =========================================================
 // */
 
+<<<<<<<
 //public void Weight_Changed(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
 //  println("Weight - GCustomSlider >> GEvent." + event + " @ " + millis());
 //} //_CODE_:Weight:334404:
+=======
+public void Weight_Changed(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
+ 
+} //_CODE_:Weight:334404:
+>>>>>>> 9f89db383092465e346e9fb2525b16ab3a11bb91
 
 //public void Weight_Typed(GTextField source, GEvent event) { //_CODE_:Weight_Text:234657:
 //  println("Weight_Text - GTextField >> GEvent." + event + " @ " + millis());

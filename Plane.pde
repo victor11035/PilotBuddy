@@ -1,18 +1,17 @@
 //plane Class//
 class Plane {
-  
-  float planeSpeed;
-  float minSpeed;
-  float maxSpeed;
+  Float Weight;
+  float Trust;
+  float drag;
+  float dragCo;
+  float WingE;
+  float MaxV;
   
   float planeY;
   float planeX;
-  color planeColor;
-  
   float planeWidth;
   float planeHeight;
-  float planeWing;
-  float Aerodynamics;
+
   boolean planeFlyingSuccesfully = true;
   //float gravity;
   //float planePitch;
@@ -24,9 +23,8 @@ class Plane {
     this.planeWidth = pW;
     this.planeHeight = pH;
     
-    this.planeSpeed = pS;
-    this.minSpeed = min;
-    this.maxSpeed = max;
+
+    this.maxVel = max;
     
     this.planeY = pY;
     this.planeX = pX;
