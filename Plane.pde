@@ -31,9 +31,6 @@ class Plane {
     this.planeY = pY;
     this.planeX = pX;
   
-    //this.takeoff = false;
-    //this.takeoffTime = 0;
-  
 }
   
   void drawPlane() {
@@ -43,18 +40,7 @@ class Plane {
     ellipse (planeX,planeY,planeWidth/3,planeHeight/3);
    
   }
-  
-  void takeOff() {
-    //runwayPlaneVelocity(float prevVel, float thrust, float dragCo, float crossArea, float maxVel, float mass)
-    float runwayVelocity = runwayPlaneVelocity(50, 300000, 0.5, 20, 300, 100000);
-    planeX += runwayVelocity/100000;
-    if(planeX > 600) {
-      planeX += 10;
-      planeY -= 1;
-    }
-    
-  }
-  
+ 
   void takeOffFail() {
     
   }

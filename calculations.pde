@@ -29,3 +29,27 @@ float getLiftoffPos(float wingEfficiency, float thrust, float dragCo, float cros
   float velocity = sqrt(((9.81*mass/wingEfficiency)-thrust)/(-1.3*0.5*dragCo*crossArea));
   return velocity; //in m/s
 }
+
+float scaleVelocity(float v) {
+  float pixelsPerMeter = width/2000;
+  float velocity = v * pixelsPerMeter;
+  return velocity;
+}
+
+float framesToSeconds() {
+  float seconds = float(frame)/60;
+  frame += 1;
+  return seconds;
+}
+
+PVector calculatePosition(float a, float t) {
+  PVector pV = new PVector(a * sq(t) / 2, a * sq(t) / 10);
+  return pV;
+}
+
+
+float metersToPixels(float d) {
+  return d * (3/2);
+}
+
+  
