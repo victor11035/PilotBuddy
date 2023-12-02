@@ -19,22 +19,24 @@ class Plane {
   //boolean takeoff;
   //int takeoffTime
   
-  Plane(float pS, float min, float max, float  pY, float pX, float pW, float pH) {
+  Plane(float xPos, float yPos, float pW, float pH) {
+    this.planeX = xPos;
+    this.planeY = yPos;
     this.planeWidth = pW;
     this.planeHeight = pH;
-    
-
-    
-    this.planeY = pY;
-    this.planeX = pX;
   
 }
   
   void drawPlane() {
-    
-    fill(255,255,255);
-    ellipse (planeX,planeY,planeWidth,planeHeight);
-    ellipse (planeX,planeY,planeWidth/3,planeHeight/3);
+    fill(255);
+    float seconds = framesToSeconds();
+    PVector position = calculatePosition(3.4, seconds);
+    float xPixel = metersToPixels(position.x);
+    float yPixel = metersToPixels(position.y);
+    float slope = (position.y - positionPrev.y) / (position.x - positionPrev.x);
+    float theta = atan(slope);
+    positionPrev = position;
+    rect(xPixel, 570 - yPixel, 20, 20);
    
   }
  

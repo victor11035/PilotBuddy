@@ -43,7 +43,7 @@ float framesToSeconds() {
 }
 
 PVector calculatePosition(float a, float t) {
-  PVector pV = new PVector(a * sq(t) / 2, a * sq(t) / 10);
+  PVector pV = new PVector(a * sq(t) / 2, 0);
   return pV;
 }
 
