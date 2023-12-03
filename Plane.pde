@@ -35,7 +35,7 @@ class Plane {
   void drawPlane() {
     noStroke();
     
-    float seconds = framesToSeconds();
+
     PVector position = this.pos.add(this.planeVelocity);
     
     if(planeOnGround){
@@ -44,31 +44,45 @@ class Plane {
       position.y += 10;
     }
     
-    println(getLiftoffPos(this.wingE, this.thrust, this.dragCo, this.crossArea, this.maxV, this.mass));
     if(this.planeVelocity.mag() > getLiftoffPos(this.wingE, this.thrust, this.dragCo, this.crossArea, this.maxV, this.mass) && planeOnGround){
       planeOnGround = false;
     }
     
     float xPixel = metersToPixels(position.x);
     float yPixel = metersToPixels(position.y);
-    float slope = (position.y - positionPrev.y) / (position.x - positionPrev.x);
-    float theta = atan(slope);
-    positionPrev = position;
-    fill(0);
-    ellipse(xPixel+20, 580-yPixel, 20, 20);
-    ellipse(xPixel-20, 580-yPixel, 20, 20);
-    fill(255);
-    ellipse(xPixel, 570-yPixel, 100, 20);
-    beginShape();
-    vertex(xPixel-20, 570-yPixel);
-    vertex(xPixel-50, 570-yPixel);
-    vertex(xPixel-50, 540-yPixel);
-    vertex(xPixel-40, 540-yPixel);
-    endShape(CLOSE);
+
+    
+    if(xPixel > runwayLength && planeOnGround == false) {
+       takeOffFail();
+
+    } else {
+      
+      fill(0);
+      ellipse(xPixel+20, 560-yPixel, 20, 20);
+      ellipse(xPixel-20, 560-yPixel, 20, 20);
+      fill(255);
+      ellipse(xPixel, 550-yPixel, 100, 20);
+      beginShape();
+      vertex(xPixel-20, 550-yPixel);
+      vertex(xPixel-50, 550-yPixel);
+      vertex(xPixel-50, 520-yPixel);
+      vertex(xPixel-40, 520-yPixel);
+      endShape(CLOSE);
+    }
    
   }
- 
+  
   void takeOffFail() {
-    
-  }
+     planeOnGround = true;
+     float explosionWidth = 10;
+     float explosionHeight = 10;
+     float y = 570;
+     fill(255, 165, 0);
+     ellipse(runwayLength, y, explosionWidth, explosionHeight);
+     y -= 10;
+   }
+  
+  
+ 
+  
 }
