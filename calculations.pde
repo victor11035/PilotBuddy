@@ -16,17 +16,24 @@ PVector climbingPlaneVelocity(float thrust, float mass, float climbAngle, PVecto
   }
 } //this is WRONG. New equations are needed.
 
-float runwayPlaneVelocity(float prevVel, float thrust, float dragCo, float crossArea, float maxVel, float mass) { // determine velocity when on runway
+PVector runwayPlaneVelocity(PVector prevVel, float thrust, float dragCo, float crossArea, float maxVel, float mass) { // determine velocity when on runway
   //PVector velocity = new PVector();
-  float velocity;
-  velocity = prevVel + thrust - 1.3*0.5*dragCo*crossArea*prevVel;
-  //velocity.y = 0;
+  PVector velocity = new PVector(0, 0);
+  velocity = prevVel;
+  float acceleration = 0;
+  if(prevVel.x <= maxVel){
+    acceleration = (thrust - 0.5*1.3*dragCo*crossArea*pow(prevVel.x, 2))/mass;
+  }
   
+  //calculate velocity from acceleration
+  velocity.x = acceleration/60+prevVel.x; //30fps
+  println(acceleration);
+  println(velocity);
   return velocity; //in m/s
 }
 
 float getLiftoffPos(float wingEfficiency, float thrust, float dragCo, float crossArea, float maxVel, float mass) {
-  float velocity = sqrt(((9.81*mass/wingEfficiency)-thrust)/(-1.3*0.5*dragCo*crossArea));
+  float velocity = sqrt((mass*9.81)/(wingEfficiency*crossArea*dragCo*1.5*0.5));
   return velocity; //in m/s
 }
 
@@ -49,7 +56,7 @@ PVector calculatePosition(float a, float t) {
 
 
 float metersToPixels(float d) {
-  return d * (3/2);
+  return d * (0.1);
 }
 
   
