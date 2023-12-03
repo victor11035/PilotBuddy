@@ -32,7 +32,7 @@ class Plane {
     this.wingE = we;
   }
   
-  void drawPlane() {
+  void movePlane() {
     noStroke();
     
 
@@ -56,18 +56,8 @@ class Plane {
        takeOffFail();
 
     } else {
+      drawPlane(xPixel, yPixel);
       
-      fill(0);
-      ellipse(xPixel+20, 560-yPixel, 20, 20);
-      ellipse(xPixel-20, 560-yPixel, 20, 20);
-      fill(255);
-      ellipse(xPixel, 550-yPixel, 100, 20);
-      beginShape();
-      vertex(xPixel-20, 550-yPixel);
-      vertex(xPixel-50, 550-yPixel);
-      vertex(xPixel-50, 520-yPixel);
-      vertex(xPixel-40, 520-yPixel);
-      endShape(CLOSE);
     }
    
   }
@@ -81,8 +71,18 @@ class Plane {
      ellipse(runwayLength, y, explosionWidth, explosionHeight);
      y -= 10;
    }
-  
-  
- 
-  
+   
+  void drawPlane(float xPixel, float yPixel) {
+    fill(0);
+      ellipse(xPixel+20, 560-yPixel, 20, 20);
+      ellipse(xPixel-20, 560-yPixel, 20, 20);
+      fill(255);
+      ellipse(xPixel, 550-yPixel, 100, 20);
+      beginShape();
+      vertex(xPixel-20, 550-yPixel);
+      vertex(xPixel-50, 550-yPixel);
+      vertex(xPixel-50, 520-yPixel);
+      vertex(xPixel-40, 520-yPixel);
+      endShape(CLOSE);
+  } 
 }
