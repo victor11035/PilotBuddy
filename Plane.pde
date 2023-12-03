@@ -56,6 +56,7 @@ class Plane {
     positionPrev = position;
     fill(0);
     ellipse(xPixel+20, 580-yPixel, 20, 20);
+    ellipse(xPixel-20, 580-yPixel, 20, 20);
     fill(255);
     ellipse(xPixel, 570-yPixel, 100, 20);
     beginShape();
