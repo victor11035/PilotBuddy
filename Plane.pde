@@ -50,10 +50,10 @@ class Plane {
     
     float xPixel = metersToPixels(position.x);
     float yPixel = metersToPixels(position.y);
-
     
-    if(xPixel > runwayLength && planeOnGround == false) {
-       takeOffFail();
+    if(xPixel > runwayLength && planeOnGround == true) {
+      this.planeVelocity.x = 0;
+      takeOffFail();
 
     } else {
       
@@ -63,14 +63,37 @@ class Plane {
   }
   
   void takeOffFail() {
-     planeOnGround = true;
-     float explosionWidth = 10;
-     float explosionHeight = 10;
-     float y = 570;
-     fill(255, 165, 0);
-     ellipse(runwayLength, y, explosionWidth, explosionHeight);
-     y -= 10;
+    
+    for(int i = 0; i < 5; i++) {
+      fill(255, 165, 0);
+    
+      if(fireHeight <= 20) {
+        directionOfFire = 1;
+      } else if(fireHeight >= 100) {
+        directionOfFire = -1;
+      }
+    
+      fireHeight += 2 * directionOfFire;
+    
+      ellipse(runwayLength-fireXValues[i], 570, 30, fireHeight);
+    }
+    
+    if(explosionWidth > 200 && explosionHeight > 200) {
+      noFill();
+      noStroke();
+      ellipse(runwayLength, 570, explosionWidth, explosionHeight);
+    } else {
+      fill(255, 165, 0);
+      ellipse(runwayLength, 570, explosionWidth, explosionHeight);
+      explosionWidth += 10;
+      explosionHeight += 10;
+    }
+    
+    rect(0, 570, runwayLength, 600);
+    
+    
    }
+   
    
   void drawPlane(float xPixel, float yPixel) {
     fill(0);
@@ -85,4 +108,5 @@ class Plane {
     vertex(xPixel-40, 520-yPixel);
     endShape(CLOSE);
   } 
+  
 }
