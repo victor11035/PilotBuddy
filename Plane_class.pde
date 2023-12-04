@@ -7,19 +7,14 @@ class Plane {
   float wingE;
   float maxV;
   float crossArea;
+
   
   PVector pos = new PVector(0, 0);
   PVector planeVelocity = new PVector(0, 0);
   float planeWidth;
   float planeHeight;
   boolean planeOnGround = true;
-
   boolean planeFlyingSuccesfully = true;
-  //float gravity;
-  //float planePitch;
-
-  //boolean takeoff;
-  //int takeoffTime
   
   Plane(float pW, float pH, float ca, float mv, float m, float t, float dc, float we) {
     this.planeWidth = pW;
@@ -33,9 +28,7 @@ class Plane {
   }
   
   void movePlane() {
-    noStroke();
-    
-
+    noStroke(); 
     PVector position = this.pos.add(this.planeVelocity);
     
     if(planeOnGround){
@@ -58,11 +51,17 @@ class Plane {
     } else {
       
     drawPlane(xPixel, yPixel);  
-    }
-   
+    }  
   }
   
   void takeOffFail() {
+    
+    rubble1.drawRubble(0.025, -5, 5);
+    rubble2.drawRubble(0.04, 5, -2);
+    rubble3.drawRubble(0.05, -4, 5);
+    rubble4.drawRubble(0.02, 4, -3);
+    rubble5.drawRubble(0.01, -5, 9);
+
     
     for(int i = 0; i < 5; i++) {
       fill(255, 165, 0);
@@ -78,20 +77,16 @@ class Plane {
       ellipse(runwayLength-fireXValues[i], 570, 30, fireHeight);
     }
     
-    if(explosionWidth > 200 && explosionHeight > 200) {
+    if(explosionWidth > 300 && explosionHeight > 300) {
       noFill();
       noStroke();
-      ellipse(runwayLength, 570, explosionWidth, explosionHeight);
+      ellipse(runwayLength-40, 570, explosionWidth, explosionHeight);
     } else {
       fill(255, 165, 0);
-      ellipse(runwayLength, 570, explosionWidth, explosionHeight);
-      explosionWidth += 10;
-      explosionHeight += 10;
-    }
-    
-    rect(0, 570, runwayLength, 600);
-    
-    
+      ellipse(runwayLength-60, 570, explosionWidth, explosionHeight);
+      explosionWidth += 15;
+      explosionHeight += 15;
+    }  
    }
    
    
@@ -107,6 +102,5 @@ class Plane {
     vertex(xPixel-50, 520-yPixel);
     vertex(xPixel-40, 520-yPixel);
     endShape(CLOSE);
-  } 
-  
+  }  
 }
