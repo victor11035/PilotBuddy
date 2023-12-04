@@ -14,14 +14,13 @@
  * =========================================================
  */
 
-synchronized public void win_draw1(PApplet appc, GWinData data) { 
+synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:window1:897252:
   appc.background(230);
-} //set mass value when changed(text box)
+} //_CODE_:window1:897252:
 
-public void Mass_Typed(GTextField source, GEvent event) {
-  valuesUpdated();
-  Mass_Slide.setValue(int(Mass_Text.getText()));//set slider to new text box value
-} //set mass value when changed(slider)
+public void Mass_Typed(GTextField source, GEvent event) { //_CODE_:Mass_Text:231540:
+  println("Mass_Text - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:Mass_Text:231540:
 
 public void Mass_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Mass_Slide:700779:
  valuesUpdated();
@@ -29,27 +28,24 @@ public void Mass_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Mass_Sli
 
 } //_CODE_:Mass_Slide:700779:
 
-public void Trust_Typed(GTextField source, GEvent event) { 
+public void Trust_Typed(GTextField source, GEvent event) { //_CODE_:Thrust_Text:907913:
   valuesUpdated();
-  Thrust_Slide.setValue(int(Thrust_Text.getText()));
-} //set thrust value when changed(text box)
+} //_CODE_:Thrust_Text:907913:
 
-public void Trust_Dragged(GCustomSlider source, GEvent event) {
-  valuesUpdated();
-  Thrust_Text.setText(str(Thrust_Slide.getValueI()));//set text box to new slider value
-}//set thrust value when changed(slider)
-
-public void Drag_Dragged(GCustomSlider source, GEvent event) { 
+public void Trust_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Thrust_Slide:336390:
  valuesUpdated();
- Drag_Text.setText(str(Drag_Slide.getValueF()));//set text box to new slider value
-} //set drag percentage when cghange(slider)
+} //_CODE_:Thrust_Slide:336390:
+
+public void Drag_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Drag_Slide:419005:
+  valuesUpdated();
+} //_CODE_:Drag_Slide:419005:
 
 public void Drag_Typed(GTextField source, GEvent event) { //_CODE_:Drag_Text:944596:
-  //println("textfield3 - GTextField >> GEvent." + event + " @ " + millis());
+   valuesUpdated();
 } //set drag percentage when changed(text box)
 
 public void DragCo_Typed(GTextField source, GEvent event) {
-  //println("textfield4 - GTextField >> GEvent." + event + " @ " + millis());
+  valuesUpdated();
 } //set drage coefficent value whne changed(text box)
 
 public void DragCo_Dragged(GCustomSlider source, GEvent event) { 
@@ -63,7 +59,7 @@ public void WingE_Dragged(GCustomSlider source, GEvent event) {
 } //set wing efficency percentage when changed(slider)
 
 public void WingE_Typed(GTextField source, GEvent event) { 
- // println("textfield5 - GTextField >> GEvent." + event + " @ " + millis());
+  valuesUpdated();
 } //set wing efficency percentage when changed(text box)
 
 public void MaxV_Dragged(GCustomSlider source, GEvent event) {
@@ -72,8 +68,12 @@ public void MaxV_Dragged(GCustomSlider source, GEvent event) {
 } //set maximun velocity value when changed(slider)
 
 public void MaxV_Typed(GTextField source, GEvent event) { 
- // println("textfield6 - GTextField >> GEvent." + event + " @ " + millis());
-} //_CODE_:MaxV_Text:851374:
+ valuesUpdated();
+} //_CODE_:Drag_Text:944596:
+
+
+
+
 
 public void Play_Clicked(GButton source, GEvent event) { //_CODE_:Play_Button:560141:
   if (running == false){//starts movement
@@ -105,6 +105,10 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
     running = false;
     Play_Button.setText("PLAY");}
 } //_CODE_:Restart:403866:
+
+public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:873027:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:button1:873027:
 
 
 
@@ -204,6 +208,9 @@ public void createGUI(){
   Restart = new GButton(window1, 220, 330, 80, 30);
   Restart.setText("Restart");
   Restart.addEventHandler(this, "Restart_Clicked");
+  button1 = new GButton(window1, 208, 29, 80, 30);
+  button1.setText("F-16");
+  button1.addEventHandler(this, "button1_click1");
   window1.loop();
 }
 
@@ -230,3 +237,4 @@ GLabel Label_MaxV;
 GTextField MaxV_Text; 
 GButton Play_Button; 
 GButton Restart; 
+GButton button1; 

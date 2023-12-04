@@ -1,4 +1,4 @@
-Plane stanleysPlane;
+
 import g4p_controls.*;
 int frame = 0;
 float xPixel = 0;
