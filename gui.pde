@@ -95,6 +95,9 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
     running = false;
     Play_Button.setText("PLAY");
     this.myPlane.pos = new PVector (0,0);
+    this.myPlane.planeVelocity = new PVector(0, 0);
+    this.myPlane.planeOnGround = true;
+    this.myPlane.planeFlyingSuccesfully = true;
     redraw();
   }
   else {
@@ -142,7 +145,7 @@ public void createGUI(){
   Thrust_Text.addEventHandler(this, "Trust_Typed");
   Thrust_Slide = new GCustomSlider(window1, 80, 80, 100, 40, "grey_blue");
   Thrust_Slide.setShowValue(true);
-  Thrust_Slide.setLimits(60000.0, 500.0, 5000000.0);
+  Thrust_Slide.setLimits(60000.0, 50.0, 50000.0);
   Thrust_Slide.setNumberFormat(G4P.DECIMAL, 2);
   Thrust_Slide.setOpaque(false);
   Thrust_Slide.addEventHandler(this, "Trust_Dragged");

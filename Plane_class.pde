@@ -8,10 +8,10 @@ class Plane {
   float crossArea;
 
   
-  PVector pos = new PVector(0, 0);
-  PVector planeVelocity = new PVector(0, 0);
-  boolean planeOnGround = true;
-  boolean planeFlyingSuccesfully = true;
+  PVector pos;
+  PVector planeVelocity;
+  boolean planeOnGround;
+  boolean planeFlyingSuccesfully;
   
   Plane(float ca, float mv, float m, float t, float dc, float we) {
     this.crossArea = ca;
@@ -20,6 +20,10 @@ class Plane {
     this.thrust = t;
     this.dragCo = dc;
     this.wingE = we;
+    pos = new PVector(0, 0);
+    planeVelocity = new PVector(0, 0);
+    planeOnGround = true;
+    planeFlyingSuccesfully = true;
   }
   
   void movePlane() {
