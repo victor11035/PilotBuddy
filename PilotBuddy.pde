@@ -1,6 +1,6 @@
 Plane stanleysPlane;
 import g4p_controls.*;
-float runwayLength = 1000;
+float runwayLength = 400;
 float explosionWidth = 1;
 float explosionHeight = 1;
 float fireHeight = 20;
