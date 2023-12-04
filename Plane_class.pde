@@ -2,7 +2,6 @@
 class Plane {
   Float mass;
   float thrust;
-  float drag;
   float dragCo;
   float wingE;
   float maxV;
@@ -11,14 +10,10 @@ class Plane {
   
   PVector pos = new PVector(0, 0);
   PVector planeVelocity = new PVector(0, 0);
-  float planeWidth;
-  float planeHeight;
   boolean planeOnGround = true;
   boolean planeFlyingSuccesfully = true;
   
-  Plane(float pW, float pH, float ca, float mv, float m, float t, float dc, float we) {
-    this.planeWidth = pW;
-    this.planeHeight = pH;
+  Plane(float ca, float mv, float m, float t, float dc, float we) {
     this.crossArea = ca;
     this.maxV = mv;
     this.mass = m;
