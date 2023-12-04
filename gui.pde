@@ -148,11 +148,11 @@ public void createGUI(){
   Thrust_Slide.addEventHandler(this, "Trust_Dragged");
   Label_Drag = new GLabel(window1, 0, 120, 180, 20);
   Label_Drag.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  Label_Drag.setText("Drag (%)");
+  Label_Drag.setText("Runway Length (m)");
   Label_Drag.setOpaque(false);
   Drag_Slide = new GCustomSlider(window1, 80, 140, 100, 40, "grey_blue");
   Drag_Slide.setShowValue(true);
-  Drag_Slide.setLimits(15, 0, 100);
+  Drag_Slide.setLimits(15, 0, 1000);
   Drag_Slide.setNumberFormat(G4P.INTEGER, 0);
   Drag_Slide.setOpaque(false);
   Drag_Slide.addEventHandler(this, "Drag_Dragged");
