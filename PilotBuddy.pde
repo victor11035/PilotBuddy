@@ -25,9 +25,6 @@ Plane myPlane = new Plane(20, 20, 2.2, 1000, 400, 4000, 0.1, 11); //float pW, fl
 void setup(){
   size(1500,600);
   
-  
-  //(float pS, float min, float max, float  pY, float pX, pW, pH)
-  stanleysPlane = new Plane(575,400,60,25);
 
 }
 
