@@ -1,5 +1,6 @@
 Plane stanleysPlane;
 import g4p_controls.*;
+
 float runwayLength = 400;
 float explosionWidth = 1;
 float explosionHeight = 1;
@@ -20,14 +21,36 @@ float rubbleQuadraticCoefficientB[] = {-5, 5};
 float rubbleXIncrementValues[] = {5, -2};
 float lineX = 0;
 
+int frame = 0;
+float xPixel = 0;
+PVector positionPrev = new PVector(0, 0);
+boolean running = false;
+
 Plane myPlane = new Plane(20, 20, 2.2, 1000, 400, 4000, 0.1, 11); //float pW, float pH, cross-sectional area (m^2), maximum velocity (m/s), mass (kg), thrust (N), drag coeff, lift-to-drag ratio (L/D). (Values of cessna 172) One pixel is 10m
 
 void setup(){
   size(1500,600);
-  
-  
-  //(float pS, float min, float max, float  pY, float pX, pW, pH)
-  stanleysPlane = new Plane(575,400,60,25);
+  createGUI();
+  noLoop();
+}
+
+void valuesUpdated(){//updated all the values of the plane when changed in the GUI
+ this.myPlane.mass = Mass_Slide.getValueF();
+ 
+ 
+ this.myPlane.thrust = Thrust_Slide.getValueF();
+
+ 
+ this.myPlane.drag = Drag_Slide.getValueI();
+
+ 
+ this.myPlane.dragCo = DragCo_Slide.getValueF();
+
+ 
+ this.myPlane.wingE = WingE_Slide.getValueI();
+
+ 
+ this.myPlane.maxV = MaxV_Slide.getValueF();
 
 }
 
@@ -42,6 +65,7 @@ void draw() {
   for(int i = 0; i < runwayLength; i += 20) {
     line(i, 585, i + 10, 585);
   }
+
 }
 
  

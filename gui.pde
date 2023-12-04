@@ -1,215 +1,232 @@
-///* =========================================================
-// * ====                   WARNING                        ===
-// * =========================================================
-// * The code in this tab has been generated from the GUI form
-// * designer and care should be taken when editing this file.
-// * Only add/edit code inside the event handlers i.e. only
-// * use lines between the matching comment tags. e.g.
+/* =========================================================
+ * ====                   WARNING                        ===
+ * =========================================================
+ * The code in this tab has been generated from the GUI form
+ * designer and care should be taken when editing this file.
+ * Only add/edit code inside the event handlers i.e. only
+ * use lines between the matching comment tags. e.g.
 
-// void myBtnEvents(GButton button) { //_CODE_:button1:12356:
-//     // It is safe to enter your event code here  
-// } //_CODE_:button1:12356:
+ void myBtnEvents(GButton button) { //_CODE_:button1:12356:
+     // It is safe to enter your event code here  
+ } //_CODE_:button1:12356:
  
-// * Do not rename this tab!
-// * =========================================================
-// */
+ * Do not rename this tab!
+ * =========================================================
+ */
+
+synchronized public void win_draw1(PApplet appc, GWinData data) { 
+  appc.background(230);
+} //set mass value when changed(text box)
+
+public void Mass_Typed(GTextField source, GEvent event) {
+  valuesUpdated();
+  Mass_Slide.setValue(int(Mass_Text.getText()));//set slider to new text box value
+} //set mass value when changed(slider)
+
+public void Mass_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Mass_Slide:700779:
+ valuesUpdated();
+ Mass_Text.setText(str(Mass_Slide.getValueF()));//set text box to new slider value
+
+} //_CODE_:Mass_Slide:700779:
+
+public void Trust_Typed(GTextField source, GEvent event) { 
+  valuesUpdated();
+  Thrust_Slide.setValue(int(Thrust_Text.getText()));
+} //set thrust value when changed(text box)
+
+public void Trust_Dragged(GCustomSlider source, GEvent event) {
+  valuesUpdated();
+  Thrust_Text.setText(str(Thrust_Slide.getValueI()));//set text box to new slider value
+}//set thrust value when changed(slider)
+
+public void Drag_Dragged(GCustomSlider source, GEvent event) { 
+ valuesUpdated();
+ Drag_Text.setText(str(Drag_Slide.getValueF()));//set text box to new slider value
+} //set drag percentage when cghange(slider)
+
+public void Drag_Typed(GTextField source, GEvent event) { //_CODE_:Drag_Text:944596:
+  //println("textfield3 - GTextField >> GEvent." + event + " @ " + millis());
+} //set drag percentage when changed(text box)
+
+public void DragCo_Typed(GTextField source, GEvent event) {
+  //println("textfield4 - GTextField >> GEvent." + event + " @ " + millis());
+} //set drage coefficent value whne changed(text box)
+
+public void DragCo_Dragged(GCustomSlider source, GEvent event) { 
+  valuesUpdated();
+  DragCo_Text.setText(str(DragCo_Slide.getValueF()));//set text box to new slider value
+} //set drag coefficent value when changed(slider)
+
+public void WingE_Dragged(GCustomSlider source, GEvent event) {
+ valuesUpdated();
+ WingE_Text.setText(str(WingE_Slide.getValueI()));//set text box to new slider value
+} //set wing efficency percentage when changed(slider)
+
+public void WingE_Typed(GTextField source, GEvent event) { 
+ // println("textfield5 - GTextField >> GEvent." + event + " @ " + millis());
+} //set wing efficency percentage when changed(text box)
+
+public void MaxV_Dragged(GCustomSlider source, GEvent event) {
+  valuesUpdated();
+  MaxV_Text.setText(str(MaxV_Slide.getValueF()));//set text box to new slider value
+} //set maximun velocity value when changed(slider)
+
+public void MaxV_Typed(GTextField source, GEvent event) { 
+ // println("textfield6 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:MaxV_Text:851374:
+
+public void Play_Clicked(GButton source, GEvent event) { //_CODE_:Play_Button:560141:
+  if (running == false){//starts movement
+    loop();
+    running = true;
+    Play_Button.setText("STOP");
+  }
+  else {//stops movement
+    noLoop();
+    running = false;
+    Play_Button.setText("PLAY");}
+   
+} //_CODE_:Play_Button:560141:
+
+public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403866:
+
+  if (running == true){//set plane and buttons back to original state
+    noLoop();
+    running = false;
+    Play_Button.setText("PLAY");
+    this.myPlane.pos = new PVector (0,0);
+    redraw();
+  }
+  else {
+    noLoop();
+    this.myPlane.pos = new PVector (0,0);
+    redraw();
+   
+    running = false;
+    Play_Button.setText("PLAY");}
+} //_CODE_:Restart:403866:
 
 
-//public void Weight_Changed(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
-//  println("Weight - GCustomSlider >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Weight:334404:
 
-public void Weight_Changed(GCustomSlider source, GEvent event) { //_CODE_:Weight:334404:
- 
-} //_CODE_:Weight:334404:
+// Create all the GUI controls. 
+// autogenerated do not edit
+public void createGUI(){
+  G4P.messagesEnabled(false);
+  G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
+  G4P.setMouseOverEnabled(false);
+  surface.setTitle("Sketch Window");
+  window1 = GWindow.getWindow(this, "Window title", 210, 137, 400, 360, JAVA2D);
+  window1.noLoop();
+  window1.setActionOnClose(G4P.KEEP_OPEN);
+  window1.addDrawHandler(this, "win_draw1");
+  Mass_Text = new GTextField(window1, 0, 20, 80, 40, G4P.SCROLLBARS_NONE);
+  Mass_Text.setPromptText("Type Mass");
+  Mass_Text.setOpaque(true);
+  Mass_Text.addEventHandler(this, "Mass_Typed");
+  Label_Weight = new GLabel(window1, 0, 0, 180, 20);
+  Label_Weight.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_Weight.setText("Plane Weight (Kg)");
+  Label_Weight.setOpaque(false);
+  Mass_Slide = new GCustomSlider(window1, 80, 20, 100, 40, "grey_blue");
+  Mass_Slide.setShowValue(true);
+  Mass_Slide.setLimits(8000.0, 3000.0, 500000.0);
+  Mass_Slide.setNumberFormat(G4P.DECIMAL, 2);
+  Mass_Slide.setOpaque(false);
+  Mass_Slide.addEventHandler(this, "Mass_Dragged");
+  Label_Thrust = new GLabel(window1, 0, 60, 180, 20);
+  Label_Thrust.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_Thrust.setText("Engine Thrust (N)");
+  Label_Thrust.setOpaque(false);
+  Thrust_Text = new GTextField(window1, 0, 80, 80, 40, G4P.SCROLLBARS_NONE);
+  Thrust_Text.setOpaque(true);
+  Thrust_Text.addEventHandler(this, "Trust_Typed");
+  Thrust_Slide = new GCustomSlider(window1, 80, 80, 100, 40, "grey_blue");
+  Thrust_Slide.setShowValue(true);
+  Thrust_Slide.setLimits(60000.0, 500.0, 5000000.0);
+  Thrust_Slide.setNumberFormat(G4P.DECIMAL, 2);
+  Thrust_Slide.setOpaque(false);
+  Thrust_Slide.addEventHandler(this, "Trust_Dragged");
+  Label_Drag = new GLabel(window1, 0, 120, 180, 20);
+  Label_Drag.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_Drag.setText("Drag (%)");
+  Label_Drag.setOpaque(false);
+  Drag_Slide = new GCustomSlider(window1, 80, 140, 100, 40, "grey_blue");
+  Drag_Slide.setShowValue(true);
+  Drag_Slide.setLimits(15, 0, 100);
+  Drag_Slide.setNumberFormat(G4P.INTEGER, 0);
+  Drag_Slide.setOpaque(false);
+  Drag_Slide.addEventHandler(this, "Drag_Dragged");
+  Drag_Text = new GTextField(window1, 0, 140, 80, 40, G4P.SCROLLBARS_NONE);
+  Drag_Text.setOpaque(true);
+  Drag_Text.addEventHandler(this, "Drag_Typed");
+  Label_DragCo = new GLabel(window1, 0, 180, 180, 20);
+  Label_DragCo.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_DragCo.setText("Drag Coefficent (0-1)");
+  Label_DragCo.setOpaque(false);
+  DragCo_Text = new GTextField(window1, 0, 200, 80, 40, G4P.SCROLLBARS_NONE);
+  DragCo_Text.setOpaque(true);
+  DragCo_Text.addEventHandler(this, "DragCo_Typed");
+  DragCo_Slide = new GCustomSlider(window1, 80, 200, 100, 40, "grey_blue");
+  DragCo_Slide.setShowValue(true);
+  DragCo_Slide.setLimits(0.25, 0.0, 1.0);
+  DragCo_Slide.setNumberFormat(G4P.DECIMAL, 2);
+  DragCo_Slide.setOpaque(false);
+  DragCo_Slide.addEventHandler(this, "DragCo_Dragged");
+  Label_WingE = new GLabel(window1, 0, 240, 180, 20);
+  Label_WingE.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_WingE.setText("Wing Efficiency (%)");
+  Label_WingE.setOpaque(false);
+  WingE_Slide = new GCustomSlider(window1, 80, 260, 100, 40, "grey_blue");
+  WingE_Slide.setShowValue(true);
+  WingE_Slide.setLimits(0, 0, 100);
+  WingE_Slide.setNumberFormat(G4P.INTEGER, 0);
+  WingE_Slide.setOpaque(false);
+  WingE_Slide.addEventHandler(this, "WingE_Dragged");
+  WingE_Text = new GTextField(window1, 0, 260, 80, 40, G4P.SCROLLBARS_NONE);
+  WingE_Text.setOpaque(true);
+  WingE_Text.addEventHandler(this, "WingE_Typed");
+  MaxV_Slide = new GCustomSlider(window1, 80, 320, 100, 40, "grey_blue");
+  MaxV_Slide.setShowValue(true);
+  MaxV_Slide.setLimits(600.0, 50.0, 5000.0);
+  MaxV_Slide.setNumberFormat(G4P.DECIMAL, 2);
+  MaxV_Slide.setOpaque(false);
+  MaxV_Slide.addEventHandler(this, "MaxV_Dragged");
+  Label_MaxV = new GLabel(window1, 0, 300, 180, 20);
+  Label_MaxV.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_MaxV.setText("Maximum Veleocity (Km/H)");
+  Label_MaxV.setOpaque(false);
+  MaxV_Text = new GTextField(window1, 0, 320, 80, 40, G4P.SCROLLBARS_NONE);
+  MaxV_Text.setOpaque(true);
+  MaxV_Text.addEventHandler(this, "MaxV_Typed");
+  Play_Button = new GButton(window1, 320, 330, 80, 30);
+  Play_Button.setText("PLAY");
+  Play_Button.addEventHandler(this, "Play_Clicked");
+  Restart = new GButton(window1, 220, 330, 80, 30);
+  Restart.setText("Restart");
+  Restart.addEventHandler(this, "Restart_Clicked");
+  window1.loop();
+}
 
-
-//public void Weight_Typed(GTextField source, GEvent event) { //_CODE_:Weight_Text:234657:
-//  println("Weight_Text - GTextField >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Weight_Text:234657:
-
-//public void custom_slider1_change2(GCustomSlider source, GEvent event) { //_CODE_:Thrust:624276:
-//  println("Thrust - GCustomSlider >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Thrust:624276:
-
-//public void textfield2_change1(GTextField source, GEvent event) { //_CODE_:thrust_text:481766:
-//  println("thrust_text - GTextField >> GEvent." + event + " @ " + millis());
-//} //_CODE_:thrust_text:481766:
-
-//public void textfield3_change1(GTextField source, GEvent event) { //_CODE_:drag_text:454773:
-//  println("drag_text - GTextField >> GEvent." + event + " @ " + millis());
-//} //_CODE_:drag_text:454773:
-
-//public void custom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:Drag:271983:
-//  println("Drag - GCustomSlider >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Drag:271983:
-
-//public void textfield4_change1(GTextField source, GEvent event) { //_CODE_:Efficiency_text:996104:
-//  println("Efficiency_text - GTextField >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Efficiency_text:996104:
-
-//public void custom_slider3_change1(GCustomSlider source, GEvent event) { //_CODE_:Efficiciency:416810:
-//  println("Efficiciency - GCustomSlider >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Efficiciency:416810:
-
-//public void textfield5_change1(GTextField source, GEvent event) { //_CODE_:maxV_text:682614:
-//  println("maxV_text - GTextField >> GEvent." + event + " @ " + millis());
-//} //_CODE_:maxV_text:682614:
-
-//public void custom_slider4_change1(GCustomSlider source, GEvent event) { //_CODE_:Velocity:838236:
-//  println("Velocity - GCustomSlider >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Velocity:838236:
-
-//public void custom_slider1_change3(GCustomSlider source, GEvent event) { //_CODE_:custom_slider1:594038:
-//  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
-//} //_CODE_:custom_slider1:594038:
-
-//public void textfield1_change2(GTextField source, GEvent event) { //_CODE_:Darg_co_text:254926:
-//  println("Darg_co_text - GTextField >> GEvent." + event + " @ " + millis());
-//} //_CODE_:Darg_co_text:254926:
-
-//public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:752893:
-//  println("button1 - GButton >> GEvent." + event + " @ " + millis());
-//} //_CODE_:button1:752893:
-
-//public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:364528:
-//  println("button2 - GButton >> GEvent." + event + " @ " + millis());
-//} //_CODE_:button2:364528:
-
-//public void button3_click1(GButton source, GEvent event) { //_CODE_:button3:456391:
-//  println("button3 - GButton >> GEvent." + event + " @ " + millis());
-//} //_CODE_:button3:456391:
-
-//public void button4_click1(GButton source, GEvent event) { //_CODE_:button4:543397:
-//  println("button4 - GButton >> GEvent." + event + " @ " + millis());
-//} //_CODE_:button4:543397:
-
-//synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:window1:897252:
-//  appc.background(230);
-//} //_CODE_:window1:897252:
-
-
-
-//// Create all the GUI controls. 
-//// autogenerated do not edit
-//public void createGUI(){
-//  G4P.messagesEnabled(false);
-//  G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
-//  G4P.setMouseOverEnabled(false);
-//  surface.setTitle("Sketch Window");
-//  Weight = new GCustomSlider(this, 80, 20, 100, 40, "grey_blue");
-//  Weight.setLimits(10000.0, 1.0, 500000.0);
-//  Weight.setNumberFormat(G4P.DECIMAL, 2);
-//  Weight.setOpaque(false);
-//  Weight.addEventHandler(this, "Weight_Changed");
-//  Weight_Text = new GTextField(this, 0, 20, 80, 40, G4P.SCROLLBARS_NONE);
-//  Weight_Text.setOpaque(true);
-//  Weight_Text.addEventHandler(this, "Weight_Typed");
-//  Thrust = new GCustomSlider(this, 80, 80, 100, 40, "grey_blue");
-//  Thrust.setLimits(0.5, 0.0, 1.0);
-//  Thrust.setNumberFormat(G4P.DECIMAL, 2);
-//  Thrust.setOpaque(false);
-//  Thrust.addEventHandler(this, "custom_slider1_change2");
-//  thrust_text = new GTextField(this, 0, 80, 80, 40, G4P.SCROLLBARS_NONE);
-//  thrust_text.setOpaque(true);
-//  thrust_text.addEventHandler(this, "textfield2_change1");
-//  Weight_Label = new GLabel(this, -1, -2, 180, 20);
-//  Weight_Label.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-//  Weight_Label.setText("PLane's weight (Kg)");
-//  Weight_Label.setOpaque(false);
-//  Trust_Label = new GLabel(this, 0, 60, 180, 20);
-//  Trust_Label.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-//  Trust_Label.setText("Total engine thrust (N)");
-//  Trust_Label.setOpaque(false);
-//  Drage_Label = new GLabel(this, 0, 120, 180, 20);
-//  Drage_Label.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-//  Drage_Label.setText("Drag (%)");
-//  Drage_Label.setOpaque(false);
-//  drag_text = new GTextField(this, 0, 140, 80, 40, G4P.SCROLLBARS_NONE);
-//  drag_text.setOpaque(true);
-//  drag_text.addEventHandler(this, "textfield3_change1");
-//  Drag = new GCustomSlider(this, 80, 140, 100, 40, "grey_blue");
-//  Drag.setLimits(0.5, 0.0, 1.0);
-//  Drag.setNumberFormat(G4P.DECIMAL, 2);
-//  Drag.setOpaque(false);
-//  Drag.addEventHandler(this, "custom_slider2_change1");
-//  Efficiency_text = new GTextField(this, 0, 260, 80, 40, G4P.SCROLLBARS_NONE);
-//  Efficiency_text.setOpaque(true);
-//  Efficiency_text.addEventHandler(this, "textfield4_change1");
-//  WingE_Label = new GLabel(this, 0, 240, 180, 20);
-//  WingE_Label.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-//  WingE_Label.setText("Wing Efficiciency");
-//  WingE_Label.setOpaque(false);
-//  Efficiciency = new GCustomSlider(this, 80, 260, 100, 40, "grey_blue");
-//  Efficiciency.setLimits(0.5, 0.0, 1.0);
-//  Efficiciency.setNumberFormat(G4P.DECIMAL, 2);
-//  Efficiciency.setOpaque(false);
-//  Efficiciency.addEventHandler(this, "custom_slider3_change1");
-//  MaxV_Label = new GLabel(this, 0, 300, 180, 20);
-//  MaxV_Label.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-//  MaxV_Label.setText("Maximum Velocity");
-//  MaxV_Label.setOpaque(false);
-//  maxV_text = new GTextField(this, 0, 320, 80, 40, G4P.SCROLLBARS_NONE);
-//  maxV_text.setOpaque(true);
-//  maxV_text.addEventHandler(this, "textfield5_change1");
-//  Velocity = new GCustomSlider(this, 80, 320, 100, 40, "grey_blue");
-//  Velocity.setLimits(0.5, 0.0, 1.0);
-//  Velocity.setNumberFormat(G4P.DECIMAL, 2);
-//  Velocity.setOpaque(false);
-//  Velocity.addEventHandler(this, "custom_slider4_change1");
-//  Drag_Co_Label = new GLabel(this, 0, 180, 180, 20);
-//  Drag_Co_Label.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-//  Drag_Co_Label.setText("Drag Coefficent");
-//  Drag_Co_Label.setOpaque(false);
-//  custom_slider1 = new GCustomSlider(this, 80, 200, 100, 40, "grey_blue");
-//  custom_slider1.setLimits(0.5, 0.0, 1.0);
-//  custom_slider1.setNumberFormat(G4P.DECIMAL, 2);
-//  custom_slider1.setOpaque(false);
-//  custom_slider1.addEventHandler(this, "custom_slider1_change3");
-//  Darg_co_text = new GTextField(this, 0, 200, 80, 40, G4P.SCROLLBARS_NONE);
-//  Darg_co_text.setOpaque(true);
-//  Darg_co_text.addEventHandler(this, "textfield1_change2");
-//  button1 = new GButton(this, 200, 1, 80, 40);
-//  button1.setText("Face text");
-//  button1.addEventHandler(this, "button1_click1");
-//  button2 = new GButton(this, 300, 0, 80, 40);
-//  button2.setText("Face text");
-//  button2.addEventHandler(this, "button2_click1");
-//  button3 = new GButton(this, 200, 60, 80, 40);
-//  button3.setText("Face text");
-//  button3.addEventHandler(this, "button3_click1");
-//  button4 = new GButton(this, 300, 60, 80, 40);
-//  button4.setText("Face text");
-//  button4.addEventHandler(this, "button4_click1");
-//  window1 = GWindow.getWindow(this, "Window title", 0, 0, 240, 120, JAVA2D);
-//  window1.noLoop();
-//  window1.setActionOnClose(G4P.KEEP_OPEN);
-//  window1.addDrawHandler(this, "win_draw1");
-//  window1.loop();
-//}
-
-//// Variable declarations 
-//// autogenerated do not edit
-//GCustomSlider Weight; 
-//GTextField Weight_Text; 
-//GCustomSlider Thrust; 
-//GTextField thrust_text; 
-//GLabel Weight_Label; 
-//GLabel Trust_Label; 
-//GLabel Drage_Label; 
-//GTextField drag_text; 
-//GCustomSlider Drag; 
-//GTextField Efficiency_text; 
-//GLabel WingE_Label; 
-//GCustomSlider Efficiciency; 
-//GLabel MaxV_Label; 
-//GTextField maxV_text; 
-//GCustomSlider Velocity; 
-//GLabel Drag_Co_Label; 
-//GCustomSlider custom_slider1; 
-//GTextField Darg_co_text; 
-//GButton button1; 
-//GButton button2; 
-//GButton button3; 
-//GButton button4; 
-//GWindow window1;
+// Variable declarations 
+// autogenerated do not edit
+GWindow window1;
+GTextField Mass_Text; 
+GLabel Label_Weight; 
+GCustomSlider Mass_Slide; 
+GLabel Label_Thrust; 
+GTextField Thrust_Text; 
+GCustomSlider Thrust_Slide; 
+GLabel Label_Drag; 
+GCustomSlider Drag_Slide; 
+GTextField Drag_Text; 
+GLabel Label_DragCo; 
+GTextField DragCo_Text; 
+GCustomSlider DragCo_Slide; 
+GLabel Label_WingE; 
+GCustomSlider WingE_Slide; 
+GTextField WingE_Text; 
+GCustomSlider MaxV_Slide; 
+GLabel Label_MaxV; 
+GTextField MaxV_Text; 
+GButton Play_Button; 
+GButton Restart; 
