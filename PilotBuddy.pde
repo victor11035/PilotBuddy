@@ -37,7 +37,6 @@ void setup(){
 void valuesUpdated(){//updated all the values of the plane when changed in the GUI
  this.myPlane.mass = Mass_Slide.getValueF();
  
- 
  this.myPlane.thrust = Thrust_Slide.getValueF();
 
  

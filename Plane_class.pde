@@ -20,10 +20,10 @@ class Plane {
     this.thrust = t;
     this.dragCo = dc;
     this.wingE = we;
-    pos = new PVector(0, 0);
-    planeVelocity = new PVector(0, 0);
-    planeOnGround = true;
-    planeFlyingSuccesfully = true;
+    this.pos = new PVector(0, 0);
+    this.planeVelocity = new PVector(0, 0);
+    this.planeOnGround = true;
+    this.planeFlyingSuccesfully = true;
   }
   
   void movePlane() {
@@ -43,13 +43,20 @@ class Plane {
     float xPixel = metersToPixels(position.x);
     float yPixel = metersToPixels(position.y);
     
-    if(xPixel > runwayLength && planeOnGround == true) {
+    if(xPixel > runwayLength + 2 && planeOnGround == true) {
       this.planeVelocity.x = 0;
-      takeOffFail();
+      this.takeOffFail();
+      this.planeFlyingSuccesfully= false;
 
-    } else {
+    } else if(xPixel > runwayLength && planeOnGround == true) {
+     rubble1 = new Rubble(runwayLength, 0);
+     rubble2 = new Rubble(runwayLength, 0);
+     rubble3 = new Rubble(runwayLength, 0);
+     rubble4 = new Rubble(runwayLength, 0);
+     rubble5 = new Rubble(runwayLength, 0);
       
-    drawPlane(xPixel, yPixel);  
+    } else {  
+    this.drawPlane(xPixel, yPixel);  
     }  
   }
   
