@@ -26,7 +26,7 @@ float xPixel = 0;
 PVector positionPrev = new PVector(0, 0);
 boolean running = false;
 
-Plane myPlane = new Plane(2.2, 1000, 400, 4000, 0.1, 11); //float pW, float pH, cross-sectional area (m^2), maximum velocity (m/s), mass (kg), thrust (N), drag coeff, lift-to-drag ratio (L/D). (Values of cessna 172) One pixel is 10m
+Plane myPlane = new Plane(1, 600, 400, 1000, 0.05, 20); //cross-sectional area (m^2), maximum velocity (m/s), mass (kg), thrust (N), drag coeff, lift-to-drag ratio (L/D). (Values of cessna 172) One pixel is 10m
 
 void setup(){
   size(1500,600);

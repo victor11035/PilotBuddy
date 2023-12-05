@@ -4,7 +4,7 @@ PVector runwayPlaneVelocity(PVector prevVel, float thrust, float dragCo, float c
   velocity = prevVel;
   float acceleration = 0;
   if(prevVel.x <= maxVel){
-    acceleration = (thrust - 0.5*1.3*dragCo*crossArea*pow(prevVel.x, 2))/mass;
+    acceleration = (10*thrust - 0.5*1.3*dragCo*crossArea*pow(prevVel.x, 2))/mass;
   }
   
   //calculate velocity from acceleration
@@ -12,8 +12,8 @@ PVector runwayPlaneVelocity(PVector prevVel, float thrust, float dragCo, float c
   return velocity; //in m/s
 }
 
-float getLiftoffPos(float wingEfficiency, float thrust, float dragCo, float crossArea, float maxVel, float mass) {
-  float velocity = sqrt((mass*9.81)/(wingEfficiency*crossArea*dragCo*1.5*0.5));
+float getLiftoffPos(float wingEfficiency, float dragCo, float crossArea, float mass) {
+  float velocity = sqrt((mass*9.81)/(wingEfficiency*crossArea*dragCo*1.3*0.5));
   return velocity; //in m/s
 }
 

@@ -36,7 +36,7 @@ class Plane {
       position.y += 10;
     }
     
-    if(this.planeVelocity.mag() > getLiftoffPos(this.wingE, this.thrust, this.dragCo, this.crossArea, this.maxV, this.mass) && planeOnGround){
+    if(this.planeVelocity.mag() > getLiftoffPos(this.wingE, this.dragCo, this.crossArea, this.mass) && planeOnGround){
       planeOnGround = false;
     }
     
