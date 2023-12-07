@@ -18,7 +18,11 @@ void valuesUpdated(){//updated all the values of the plane when changed in the G
  this.myPlane.thrust = Thrust_Slide.getValueF();
 
  
+<<<<<<< Updated upstream
  this.myPlane.drag = Drag_Slide.getValueI();
+=======
+ runwayLength = Rway_Slide.getValueF();
+>>>>>>> Stashed changes
 
  
  this.myPlane.dragCo = DragCo_Slide.getValueF();
