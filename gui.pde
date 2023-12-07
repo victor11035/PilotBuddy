@@ -24,11 +24,16 @@ public void Mass_Typed(GTextField source, GEvent event) { //_CODE_:Mass_Text:231
 
 public void Mass_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Mass_Slide:700779:
  valuesUpdated();
+<<<<<<< Updated upstream
  Mass_Text.setText(str(Mass_Slide));
+=======
+ Mass_Text.setText(str(int(Mass_Slide)));
+>>>>>>> Stashed changes
 
 } //_CODE_:Mass_Slide:700779:
 
 public void Trust_Typed(GTextField source, GEvent event) { //_CODE_:Thrust_Text:907913:
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   valuesUpdated();
 } //_CODE_:Thrust_Text:907913:
@@ -95,6 +100,35 @@ public void MaxV_Typed(GTextField source, GEvent event) {
 
 
 =======
+=======
+  println("Thrust_Text - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:Thrust_Text:907913:
+
+public void Trust_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Thrust_Slide:336390:
+  println("Thrust_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:Thrust_Slide:336390:
+
+public void DragCo_Typed(GTextField source, GEvent event) { //_CODE_:DragCo_Text:293054:
+  println("DragCo_Text - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:DragCo_Text:293054:
+
+public void DragCo_Dragged(GCustomSlider source, GEvent event) { //_CODE_:DragCo_Slide:707866:
+  println("DragCo_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:DragCo_Slide:707866:
+
+public void WingE_Dragged(GCustomSlider source, GEvent event) { //_CODE_:WingE_Slide:369871:
+  println("WingE_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:WingE_Slide:369871:
+
+public void WingE_Typed(GTextField source, GEvent event) { //_CODE_:WingE_Text:528527:
+  println("WingE_Text - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:WingE_Text:528527:
+
+public void MaxV_Dragged(GCustomSlider source, GEvent event) { //_CODE_:MaxV_Slide:905771:
+  println("MaxV_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:MaxV_Slide:905771:
+
+>>>>>>> Stashed changes
 public void MaxV_Typed(GTextField source, GEvent event) { //_CODE_:MaxV_Text:851374:
   println("MaxV_Text - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:MaxV_Text:851374:
@@ -120,6 +154,12 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
     running = false;
     Play_Button.setText("PLAY");
     this.myPlane.pos = new PVector (0,0);
+<<<<<<< Updated upstream
+=======
+    this.myPlane.planeVelocity = new PVector(0, 0);
+    this.myPlane.planeOnGround = true;
+    this.myPlane.planeFlyingSuccesfully = true;
+>>>>>>> Stashed changes
     redraw();
   }
   else {
@@ -132,10 +172,13 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
 } //_CODE_:Restart:403866:
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:873027:
   println("button1 - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:button1:873027:
 =======
+=======
+>>>>>>> Stashed changes
 public void Rway_Typed(GTextField source, GEvent event) { //_CODE_:Rway_Text:389508:
   println("Rway_Text - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:Rway_Text:389508:
@@ -151,6 +194,9 @@ public void Csection_Typed(GTextField source, GEvent event) { //_CODE_:Csection_
 public void Csection_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Csection_Slide:508795:
   println("Csection_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:Csection_Slide:508795:
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -194,6 +240,7 @@ public void createGUI(){
   Thrust_Slide.setOpaque(false);
   Thrust_Slide.addEventHandler(this, "Trust_Dragged");
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   Label_Drag = new GLabel(window1, 0, 120, 180, 20);
   Label_Drag.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   Label_Drag.setText("Drag (%)");
@@ -207,6 +254,8 @@ public void createGUI(){
   Drag_Text = new GTextField(window1, 0, 140, 80, 40, G4P.SCROLLBARS_NONE);
   Drag_Text.setOpaque(true);
   Drag_Text.addEventHandler(this, "Drag_Typed");
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   Label_DragCo = new GLabel(window1, 0, 180, 180, 20);
@@ -255,10 +304,13 @@ public void createGUI(){
   Restart.setText("Restart");
   Restart.addEventHandler(this, "Restart_Clicked");
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   button1 = new GButton(window1, 208, 29, 80, 30);
   button1.setText("F-16");
   button1.addEventHandler(this, "button1_click1");
 =======
+=======
+>>>>>>> Stashed changes
   Label_Rway = new GLabel(window1, 0, 120, 180, 20);
   Label_Rway.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   Label_Rway.setText("Runway Length");
@@ -283,6 +335,9 @@ public void createGUI(){
   Csection_Slide.setNumberFormat(G4P.DECIMAL, 2);
   Csection_Slide.setOpaque(false);
   Csection_Slide.addEventHandler(this, "Csection_Dragged");
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   window1.loop();
 }
@@ -308,12 +363,18 @@ GTextField MaxV_Text;
 GButton Play_Button; 
 GButton Restart; 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 GButton button1; 
 =======
+=======
+>>>>>>> Stashed changes
 GLabel Label_Rway; 
 GTextField Rway_Text; 
 GCustomSlider Rway_Slide; 
 GLabel Label_Csection; 
 GTextField Csection_Text; 
 GCustomSlider Csection_Slide; 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
