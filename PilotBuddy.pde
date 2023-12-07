@@ -36,7 +36,8 @@ void valuesUpdated( ){//updated all the values of the plane when changed in the 
 
  
  runwayLength = Drag_Slide.getValueI();
- 
+ this.myPlane.planeFlyingSuccesfully = true;
+
  
  this.myPlane.dragCo = DragCo_Slide.getValueF();
 

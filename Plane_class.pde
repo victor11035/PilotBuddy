@@ -47,12 +47,20 @@ class Plane {
     
     if(xPixel > runwayLength && planeOnGround == true) {
       this.planeVelocity.x = 0;
-      this.takeOffFail();
-      this.planeFlyingSuccesfully= false;
+      this.planeFlyingSuccesfully = false;
+     rubble1 = new Rubble(runwayLength, 530);
+     rubble2 = new Rubble(runwayLength, 530);
+     rubble3 = new Rubble(runwayLength, 530);
+     rubble4 = new Rubble(runwayLength, 500);
+     rubble5 = new Rubble(runwayLength, 500);
       
     } else {  
       this.drawPlane(xPixel, yPixel);  
     }  
+    
+    if(!this.planeFlyingSuccesfully){
+      this.takeOffFail();
+    }
   }
   
   void takeOffFail() { //Method for when the plane does not take off successfully
