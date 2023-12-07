@@ -89,6 +89,10 @@ public void Play_Clicked(GButton source, GEvent event) { //_CODE_:Play_Button:56
 } //_CODE_:Play_Button:560141:
 
 public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403866:
+  resetValues();
+} //_CODE_:Restart:403866:
+
+void resetValues(){
 
   if (running == true){//set plane and buttons back to original state
     noLoop();
@@ -121,8 +125,7 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
    
     running = false;
     Play_Button.setText("PLAY");}
-} //_CODE_:Restart:403866:
-
+}
 
 
 // Create all the GUI controls. 

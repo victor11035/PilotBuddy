@@ -62,7 +62,7 @@ void valuesUpdated( ){//updated all the values of the plane when changed in the 
   running = false;
   Play_Button.setText("PLAY");
 
-
+  resetValues();
 }
 
 //Draw function to animate the plane
