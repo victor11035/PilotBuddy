@@ -89,6 +89,23 @@ public void Rway_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Rway_Sli
    valuesUpdated();
 } //_CODE_:Rway_Slide:772450:
 
+<<<<<<< HEAD
+=======
+//set plane and buttons back to original state
+    noLoop();
+    running = false;
+    Play_Button.setText("PLAY");
+    myPlane.pos = new PVector (0,0);
+    myPlane.planeVelocity = new PVector(0, 0);
+    myPlane.planeOnGround = true;
+    myPlane.planeFlyingSuccesfully = true;
+    for(int i = 0; i < rubbleObjects.length; i++) {
+      this.rubbleObjects[i].rubbleX = runwayLength;
+      this.rubbleObjects[i].rubbleY = rubbleGroundPosition;
+    }
+    redraw();
+}
+>>>>>>> 5fcc1428e50f543dd997ba0a6bd68e3b5c3da8c7
 
 
 // Create all the GUI controls. 
