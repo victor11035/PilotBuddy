@@ -98,16 +98,20 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
     this.myPlane.planeVelocity = new PVector(0, 0);
     this.myPlane.planeOnGround = true;
     this.myPlane.planeFlyingSuccesfully = true;
-    this.rubble1.rubbleX = runwayLength;
-    this.rubble2.rubbleX = runwayLength;
-    this.rubble3.rubbleX = runwayLength;
-    this.rubble4.rubbleX = runwayLength;
-    this.rubble5.rubbleX = runwayLength;
-    this.rubble1.rubbleY = 0;
-    this.rubble2.rubbleY = 0;
-    this.rubble3.rubbleY = 0;
-    this.rubble4.rubbleY = 0;
-    this.rubble5.rubbleY = 0;
+    //this.rubble1.rubbleX = runwayLength;
+    //this.rubble2.rubbleX = runwayLength;
+    //this.rubble3.rubbleX = runwayLength;
+    //this.rubble4.rubbleX = runwayLength;
+    //this.rubble5.rubbleX = runwayLength;
+    //this.rubble1.rubbleY = 560;
+    //this.rubble2.rubbleY = 560;
+    //this.rubble3.rubbleY = 560;
+    //this.rubble4.rubbleY = 560;
+    //this.rubble5.rubbleY = 560;
+    for(int i = 0; i < rubbleObjects.length; i++) {
+      this.rubbleObjects[i].rubbleX = runwayLength;
+      this.rubbleObjects[i].rubbleY = rubbleGroundPosition;
+    }
     redraw();
   }
   else {

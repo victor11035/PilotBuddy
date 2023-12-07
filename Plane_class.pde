@@ -45,31 +45,20 @@ class Plane {
     float xPixel = metersToPixels(position.x);
     float yPixel = metersToPixels(position.y);
     
-    if(xPixel > runwayLength + 2 && planeOnGround == true) {
+    if(xPixel > runwayLength && planeOnGround == true) {
       this.planeVelocity.x = 0;
       this.takeOffFail();
       this.planeFlyingSuccesfully= false;
       
-    } else if(xPixel > runwayLength && planeOnGround == true) { 
-     rubble1 = new Rubble(runwayLength, 0);
-     rubble2 = new Rubble(runwayLength, 0);
-     rubble3 = new Rubble(runwayLength, 0);
-     rubble4 = new Rubble(runwayLength, 0);
-     rubble5 = new Rubble(runwayLength, 0);
-      
     } else {  
-    this.drawPlane(xPixel, yPixel);  
+      this.drawPlane(xPixel, yPixel);  
     }  
   }
   
   void takeOffFail() { //Method for when the plane does not take off successfully
-    
-    //Calling the method from the rubble class to draw the rubble
-    rubble1.drawRubble(0.025, -5, 5);
-    rubble2.drawRubble(0.04, 5, -2);
-    rubble3.drawRubble(0.05, -4, 5);
-    rubble4.drawRubble(0.02, 4, -3);
-    rubble5.drawRubble(0.01, -5, 9);
+    for(int i = 0; i < rubbleObjects.length; i++) { //Uses a for loop to draw each rubble object with its parameters set in the global arrays
+      rubbleObjects[i].drawRubble(quadraticACoefficient[i], quadraticBCoefficient[i], incrementValues[i]);
+    }
 
     
     for(int i = 0; i < 5; i++) { //For loop to draw the 5 ellipses representing fire

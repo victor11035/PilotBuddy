@@ -8,7 +8,7 @@ PVector runwayPlaneVelocity(PVector prevVel, float thrust, float dragCo, float c
   }
   
   //calculate velocity from acceleration
-  velocity.x = acceleration/60+prevVel.x; //30fps
+  velocity.x = acceleration/60+prevVel.x; //60fps
   return velocity; //in m/s
 }
 
