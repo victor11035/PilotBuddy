@@ -55,38 +55,38 @@ class Plane {
   
   void takeOffFail() {
     
-    rubble1.drawRubble(0.025, -5, 5);
-    rubble2.drawRubble(0.04, 5, -2);
-    rubble3.drawRubble(0.05, -4, 5);
-    rubble4.drawRubble(0.02, 4, -3);
-    rubble5.drawRubble(0.01, -5, 9);
+    //rubble1.drawRubble(0.025, -5, 5);
+    //rubble2.drawRubble(0.04, 5, -2);
+    //rubble3.drawRubble(0.05, -4, 5);
+    //rubble4.drawRubble(0.02, 4, -3);
+    //rubble5.drawRubble(0.01, -5, 9);
 
     
-    for(int i = 0; i < 5; i++) {
-      fill(255, 165, 0);
+//    for(int i = 0; i < 5; i++) {
+//      fill(255, 165, 0);
     
-      if(fireHeight <= 20) {
-        directionOfFire = 1;
-      } else if(fireHeight >= 100) {
-        directionOfFire = -1;
-      }
+//      if(fireHeight <= 20) {
+//        directionOfFire = 1;
+//      } else if(fireHeight >= 100) {
+//        directionOfFire = -1;
+//      }
     
-      fireHeight += 2 * directionOfFire;
+//      fireHeight += 2 * directionOfFire;
     
-      ellipse(runwayLength-fireXValues[i], 570, 30, fireHeight);
-    }
+//      ellipse(runwayLength-fireXValues[i], 570, 30, fireHeight);
+//    }
     
-    if(explosionWidth > 300 && explosionHeight > 300) {
-      noFill();
-      noStroke();
-      ellipse(runwayLength-40, 570, explosionWidth, explosionHeight);
-    } else {
-      fill(255, 165, 0);
-      ellipse(runwayLength-60, 570, explosionWidth, explosionHeight);
-      explosionWidth += 15;
-      explosionHeight += 15;
-    }  
-   }
+//    if(explosionWidth > 300 && explosionHeight > 300) {
+//      noFill();
+//      noStroke();
+//      ellipse(runwayLength-40, 570, explosionWidth, explosionHeight);
+//    } else {
+//      fill(255, 165, 0);
+//      ellipse(runwayLength-60, 570, explosionWidth, explosionHeight);
+//      explosionWidth += 15;
+//      explosionHeight += 15;
+//    }  
+//   }
    
    
   void drawPlane(float xPixel, float yPixel) {
