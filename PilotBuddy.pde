@@ -37,22 +37,15 @@ void valuesUpdated( ){//updated all the values of the plane when changed in the 
  
  runwayLength = Drag_Slide.getValueI();
  this.myPlane.planeFlyingSuccesfully = true;
-
- 
  this.myPlane.dragCo = DragCo_Slide.getValueF();
-
- 
  this.myPlane.wingE = WingE_Slide.getValueI();
-
- 
  this.myPlane.maxV = MaxV_Slide.getValueF();
-
+ 
   for(int i = 0; i < rubbleObjects.length; i++) {
     this.rubbleObjects[i].rubbleX = runwayLength;
     this.rubbleObjects[i].rubbleY = rubbleGroundPosition;
   }
 
-  
   this.positionPrev = new PVector(0, 0);
   this.myPlane.pos = new PVector(0, 0);
   this.running = false;
@@ -61,10 +54,42 @@ void valuesUpdated( ){//updated all the values of the plane when changed in the 
    
   running = false;
   Play_Button.setText("PLAY");
-
   resetValues();
 }
 
+void resetValues(){
+
+  if (running == true){//set plane and buttons back to original state
+    noLoop();
+    running = false;
+    Play_Button.setText("PLAY");
+    this.myPlane.pos = new PVector (0,0);
+    this.myPlane.planeVelocity = new PVector(0, 0);
+    this.myPlane.planeOnGround = true;
+    this.myPlane.planeFlyingSuccesfully = true;
+    //this.rubble1.rubbleX = runwayLength;
+    //this.rubble2.rubbleX = runwayLength;
+    //this.rubble3.rubbleX = runwayLength;
+    //this.rubble4.rubbleX = runwayLength;
+    //this.rubble5.rubbleX = runwayLength;
+    //this.rubble1.rubbleY = 560;
+    //this.rubble2.rubbleY = 560;
+    //this.rubble3.rubbleY = 560;
+    //this.rubble4.rubbleY = 560;
+    //this.rubble5.rubbleY = 560;
+    for(int i = 0; i < rubbleObjects.length; i++) {
+      this.rubbleObjects[i].rubbleX = runwayLength;
+      this.rubbleObjects[i].rubbleY = rubbleGroundPosition;
+    }
+    redraw();
+  }
+  else {
+    noLoop();
+    this.myPlane.pos = new PVector (0,0);
+    redraw();
+    running = false;
+    Play_Button.setText("PLAY");}
+}
 //Draw function to animate the plane
 void draw() {
   background(0, 100, 150);
