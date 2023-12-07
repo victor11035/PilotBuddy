@@ -18,76 +18,51 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
   appc.background(230);
 } //_CODE_:window1:897252:
 
-public void Mass_Typed(GTextField source, GEvent event) { //_CODE_:Mass_Text:231540:
- valuesUpdated();
-} 
-public void Mass_Dragged(GCustomSlider source, GEvent event) } //_CODE_:Mass_Text:231540:
-
 public void Mass_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Mass_Slide:700779:
-
-public void Trust_Typed(GTextField source, GEvent event) } //_CODE_:Mass_Slide:700779:
-
-public void Trust_Typed(GTextField source, GEvent event) { //_CODE_:Thrust_Text:907913:
-  println("Thrust_Text - GTextField >> GEvent." + event + " @ " + millis());
-} //_CODE_:Thrust_Text:907913:
+ valuesUpdated();
+ valuesReset();
+} //_CODE_:Mass_Slide:700779:
 
 public void Trust_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Thrust_Slide:336390:
-  println("Thrust_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+  valuesUpdated();
 } //_CODE_:Thrust_Slide:336390:
 
-public void DragCo_Typed(GTextField source, GEvent event) { //_CODE_:DragCo_Text:293054:
-   valuesUpdated();
-}
-public void DragCo_Dragged(GCustomSlider source, GEvent event) } //_CODE_:DragCo_Text:293054:
-
 public void DragCo_Dragged(GCustomSlider source, GEvent event) { //_CODE_:DragCo_Slide:707866:
-
-public void WingE_Dragged(GCustomSlider source, GEvent event) } //_CODE_:DragCo_Slide:707866:
+  valuesUpdated();
+} //_CODE_:DragCo_Slide:707866:
 
 public void WingE_Dragged(GCustomSlider source, GEvent event) { //_CODE_:WingE_Slide:369871:
-  println("WingE_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+   valuesUpdated();
 } //_CODE_:WingE_Slide:369871:
 
-public void WingE_Typed(GTextField source, GEvent event) { //_CODE_:WingE_Text:528527:
-  println("WingE_Text - GTextField >> GEvent." + event + " @ " + millis());
-} //_CODE_:WingE_Text:528527:
-
-public void MaxV_Dragged(GCustomSlider source, GEvent event) { //_CODE_:MaxV_Slide:905771:
-   valuesUpdated();
-}
-public void MaxV_Typed(GTextField source, GEvent event) } //_CODE_:MaxV_Slide:905771:
-
-public void MaxV_Typed(GTextField source, GEvent event) { //_CODE_:MaxV_Text:851374:
-
-public void Play_Clicked(GButton source, GEvent event) } //_CODE_:MaxV_Text:851374:
-
 public void Play_Clicked(GButton source, GEvent event) { //_CODE_:Play_Button:560141:
-  println("Play_Button - GButton >> GEvent." + event + " @ " + millis());
+  if (running == false){//starts movement
+    loop();
+    running = true;
+    Play_Button.setText("STOP");
+  }
+  else {//stops movement
+    noLoop();
+    running = false;
+    Play_Button.setText("PLAY");}
+   
 } //_CODE_:Play_Button:560141:
 
 public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403866:
-  println("Restart - GButton >> GEvent." + event + " @ " + millis());
+  resetValues();
 } //_CODE_:Restart:403866:
 
-public void F22_Made(GButton source, GEvent event) { //_CODE_:F22:873027:
-  println("F22 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:F22:873027:
-
-public void CrossA_Dragged(GCustomSlider source, GEvent event) { //_CODE_:CrossA_Slide:470199:
- valuesUpdated();
-} //_CODE_:CrossA_Slide:470199:
-
-public void CrossA_Typed(GTextField source, GEvent event) { //_CODE_:CrossA_Text:633022:
+public void CrossA_Dragged(GCustomSlider source, GEvent event) { //_CODE_:CrossA_Slide:392257:
   valuesUpdated();
-} //_CODE_:CrossA_Text:633022:
+} //_CODE_:CrossA_Slide:392257:
 
-public void Rway_Typed(GTextField source, GEvent event) { //_CODE_:Rway_Text:640300:
-   valuesUpdated();
-} //_CODE_:Rway_Text:640300:
+public void Rway_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Rway_Slide:259555:
+ valuesUpdated();
+} //_CODE_:Rway_Slide:259555:
 
-public void Rway_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Rway_Slide:772450:
+public void DtoL_Dragged(GCustomSlider source, GEvent event) { //_CODE_:DtoL_Slide:358120:
    valuesUpdated();
-} //_CODE_:Rway_Slide:772450:
+} //_CODE_:DtoL_Slide:358120:
 
 
 
@@ -102,17 +77,13 @@ public void createGUI(){
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
-  Mass_Text = new GTextField(window1, 0, 20, 80, 40, G4P.SCROLLBARS_NONE);
-  Mass_Text.setPromptText("Type Mass");
-  Mass_Text.setOpaque(true);
-  Mass_Text.addEventHandler(this, "Mass_Typed");
   Label_Weight = new GLabel(window1, 0, 0, 180, 20);
   Label_Weight.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   Label_Weight.setText("Plane Weight (Kg)");
   Label_Weight.setOpaque(false);
   Mass_Slide = new GCustomSlider(window1, 80, 20, 100, 40, "grey_blue");
   Mass_Slide.setShowValue(true);
-  Mass_Slide.setLimits(8000.0, 3000.0, 500000.0);
+  Mass_Slide.setLimits(2000.0, 1.0, 2000.0);
   Mass_Slide.setNumberFormat(G4P.DECIMAL, 2);
   Mass_Slide.setOpaque(false);
   Mass_Slide.addEventHandler(this, "Mass_Dragged");
@@ -120,10 +91,7 @@ public void createGUI(){
   Label_Thrust.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   Label_Thrust.setText("Engine Thrust (N)");
   Label_Thrust.setOpaque(false);
-  Thrust_Text = new GTextField(window1, 0, 80, 80, 40, G4P.SCROLLBARS_NONE);
-  Thrust_Text.setOpaque(true);
-  Thrust_Text.addEventHandler(this, "Trust_Typed");
-  Thrust_Slide = new GCustomSlider(window1, 81, 80, 100, 40, "grey_blue");
+  Thrust_Slide = new GCustomSlider(window1, 80, 80, 100, 40, "grey_blue");
   Thrust_Slide.setShowValue(true);
   Thrust_Slide.setLimits(60000.0, 500.0, 5000000.0);
   Thrust_Slide.setNumberFormat(G4P.DECIMAL, 2);
@@ -133,9 +101,6 @@ public void createGUI(){
   Label_DragCo.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   Label_DragCo.setText("Drag Coefficent (0-1)");
   Label_DragCo.setOpaque(false);
-  DragCo_Text = new GTextField(window1, 0, 260, 80, 40, G4P.SCROLLBARS_NONE);
-  DragCo_Text.setOpaque(true);
-  DragCo_Text.addEventHandler(this, "DragCo_Typed");
   DragCo_Slide = new GCustomSlider(window1, 80, 260, 100, 40, "grey_blue");
   DragCo_Slide.setShowValue(true);
   DragCo_Slide.setLimits(0.25, 0.0, 1.0);
@@ -152,82 +117,58 @@ public void createGUI(){
   WingE_Slide.setNumberFormat(G4P.INTEGER, 0);
   WingE_Slide.setOpaque(false);
   WingE_Slide.addEventHandler(this, "WingE_Dragged");
-  WingE_Text = new GTextField(window1, 0, 140, 80, 40, G4P.SCROLLBARS_NONE);
-  WingE_Text.setOpaque(true);
-  WingE_Text.addEventHandler(this, "WingE_Typed");
-  MaxV_Slide = new GCustomSlider(window1, 80, 200, 100, 40, "grey_blue");
-  MaxV_Slide.setShowValue(true);
-  MaxV_Slide.setLimits(600.0, 50.0, 5000.0);
-  MaxV_Slide.setNumberFormat(G4P.DECIMAL, 2);
-  MaxV_Slide.setOpaque(false);
-  MaxV_Slide.addEventHandler(this, "MaxV_Dragged");
-  Label_MaxV = new GLabel(window1, 0, 180, 180, 20);
-  Label_MaxV.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  Label_MaxV.setText("Maximum Veleocity (Km/H)");
-  Label_MaxV.setOpaque(false);
-  MaxV_Text = new GTextField(window1, 0, 200, 80, 40, G4P.SCROLLBARS_NONE);
-  MaxV_Text.setOpaque(true);
-  MaxV_Text.addEventHandler(this, "MaxV_Typed");
-  Play_Button = new GButton(window1, 320, 390, 80, 30);
+  Play_Button = new GButton(window1, 320, 330, 80, 30);
   Play_Button.setText("PLAY");
   Play_Button.addEventHandler(this, "Play_Clicked");
-  Restart = new GButton(window1, 220, 390, 80, 30);
+  Restart = new GButton(window1, 220, 330, 80, 30);
   Restart.setText("Restart");
   Restart.addEventHandler(this, "Restart_Clicked");
-  F22 = new GButton(window1, 208, 29, 80, 30);
-  F22.setText("F-22 Raptor");
-  F22.addEventHandler(this, "F22_Made");
-  CrossA = new GLabel(window1, 0, 300, 180, 20);
-  CrossA.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  CrossA.setText("Cross Sectional Area");
-  CrossA.setOpaque(false);
+  Label_CrossA = new GLabel(window1, 0, 300, 180, 20);
+  Label_CrossA.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_CrossA.setText("Cross Sectional Area");
+  Label_CrossA.setOpaque(false);
+  Label_Rway = new GLabel(window1, 0, 360, 180, 20);
+  Label_Rway.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_Rway.setText("Runway Length (M)");
+  Label_Rway.setOpaque(false);
   CrossA_Slide = new GCustomSlider(window1, 80, 320, 100, 40, "grey_blue");
-  CrossA_Slide.setLimits(0.5, 0.0, 1.0);
+  CrossA_Slide.setLimits(4.0, 1.0, 10.0);
   CrossA_Slide.setNumberFormat(G4P.DECIMAL, 2);
   CrossA_Slide.setOpaque(false);
   CrossA_Slide.addEventHandler(this, "CrossA_Dragged");
-  CrossA_Text = new GTextField(window1, 0, 320, 80, 40, G4P.SCROLLBARS_NONE);
-  CrossA_Text.setOpaque(true);
-  CrossA_Text.addEventHandler(this, "CrossA_Typed");
-  Rway_Text = new GTextField(window1, 0, 380, 80, 40, G4P.SCROLLBARS_NONE);
-  Rway_Text.setOpaque(true);
-  Rway_Text.addEventHandler(this, "Rway_Typed");
-  Label_Rway = new GLabel(window1, 0, 360, 180, 20);
-  Label_Rway.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  Label_Rway.setText("Runway Length");
-  Label_Rway.setOpaque(false);
   Rway_Slide = new GCustomSlider(window1, 80, 380, 100, 40, "grey_blue");
-  Rway_Slide.setLimits(0.5, 0.0, 1.0);
+  Rway_Slide.setLimits(500.0, 50.0, 750.0);
   Rway_Slide.setNumberFormat(G4P.DECIMAL, 2);
   Rway_Slide.setOpaque(false);
   Rway_Slide.addEventHandler(this, "Rway_Dragged");
+  Label_DtoL = new GLabel(window1, 0, 180, 180, 20);
+  Label_DtoL.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  Label_DtoL.setText("Drag to Lift (Ratio)");
+  Label_DtoL.setOpaque(false);
+  DtoL_Slide = new GCustomSlider(window1, 80, 200, 100, 40, "grey_blue");
+  DtoL_Slide.setLimits(5.0, 0.0, 35.0);
+  DtoL_Slide.setNumberFormat(G4P.DECIMAL, 2);
+  DtoL_Slide.setOpaque(false);
+  DtoL_Slide.addEventHandler(this, "DtoL_Dragged");
   window1.loop();
 }
 
 // Variable declarations 
 // autogenerated do not edit
 GWindow window1;
-GTextField Mass_Text; 
 GLabel Label_Weight; 
 GCustomSlider Mass_Slide; 
 GLabel Label_Thrust; 
-GTextField Thrust_Text; 
 GCustomSlider Thrust_Slide; 
 GLabel Label_DragCo; 
-GTextField DragCo_Text; 
 GCustomSlider DragCo_Slide; 
 GLabel Label_WingE; 
 GCustomSlider WingE_Slide; 
-GTextField WingE_Text; 
-GCustomSlider MaxV_Slide; 
-GLabel Label_MaxV; 
-GTextField MaxV_Text; 
 GButton Play_Button; 
 GButton Restart; 
-GButton F22; 
-GLabel CrossA; 
-GCustomSlider CrossA_Slide; 
-GTextField CrossA_Text; 
-GTextField Rway_Text; 
+GLabel Label_CrossA; 
 GLabel Label_Rway; 
+GCustomSlider CrossA_Slide; 
 GCustomSlider Rway_Slide; 
+GLabel Label_DtoL; 
+GCustomSlider DtoL_Slide; 

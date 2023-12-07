@@ -29,17 +29,17 @@ void setup() {
   }
 }
 
-void valuesUpdated( ){//updated all the values of the plane when changed in the GUI
+void valuesUpdated(){//updated all the values of the plane when changed in the GUI
  this.myPlane.mass = Mass_Slide.getValueF();
  
  this.myPlane.thrust = Thrust_Slide.getValueF();
 
  
- runwayLength = Drag_Slide.getValueI();
+ runwayLength =Rway_Slide.getValueI();
  this.myPlane.planeFlyingSuccesfully = true;
  this.myPlane.dragCo = DragCo_Slide.getValueF();
  this.myPlane.wingE = WingE_Slide.getValueI();
- this.myPlane.maxV = MaxV_Slide.getValueF();
+ 
  
   for(int i = 0; i < rubbleObjects.length; i++) {
     this.rubbleObjects[i].rubbleX = runwayLength;
@@ -57,8 +57,7 @@ void valuesUpdated( ){//updated all the values of the plane when changed in the 
   resetValues();
 }
 
-void resetValues(){
-
+void valuesReset(){
   if (running == true){//set plane and buttons back to original state
     noLoop();
     running = false;
