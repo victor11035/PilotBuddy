@@ -2,21 +2,19 @@
 class Plane {
   
   //Declaring fields of the plane class
-  Float mass;
-  float thrust;
-  float dragCo;
-  float wingE;
-  float maxV;
-  float crossArea;
-  PVector pos;
-  PVector planeVelocity;
-  boolean planeOnGround;
-  boolean planeFlyingSuccesfully;
+  Float mass; //mass of plane in kg
+  float thrust; //thrust of plane in newtons
+  float dragCo; //drag coefficient of plane, an experimentally calculated number different for each plane
+  float wingE; //lift-to-drag ratio of plane
+  float crossArea; //plane's cross-sectional area
+  PVector pos; //plane position
+  PVector planeVelocity; //plane velocity
+  boolean planeOnGround; //boolean keeping track of whether plane is on ground
+  boolean planeFlyingSuccesfully; //boolean keeping track of whether plane has crashed
   
   //Declaring the constructor of the plane class
-  Plane(float ca, float mv, float m, float t, float dc, float we) {
+  Plane(float ca, float m, float t, float dc, float we) {
     this.crossArea = ca;
-    this.maxV = mv;
     this.mass = m;
     this.thrust = t;
     this.dragCo = dc;
@@ -30,32 +28,29 @@ class Plane {
   //Method to move the plane
   void movePlane() {
     noStroke(); 
-    PVector position = this.pos.add(this.planeVelocity);
+    this.pos = this.pos.add(this.planeVelocity); //updating position pvector by adding velocity pvector
     
     if(planeOnGround){
-      this.planeVelocity = runwayPlaneVelocity(this.planeVelocity, this.thrust, this.dragCo, this.crossArea, this.maxV, this.mass);
+      this.planeVelocity = runwayPlaneVelocity(this.planeVelocity, this.thrust, this.dragCo, this.crossArea, this.mass); //If the plane is on the runway, update the velocity according to the equation
     } else {
-      position.y += 10;
+      this.pos.y += 10; //If the plane is in the air, increase its altitude linearly
     }
     
-    if(this.planeVelocity.mag() > getLiftoffPos(this.wingE, this.dragCo, this.crossArea, this.mass) && planeOnGround){
+    if(this.planeVelocity.mag() > getLiftoffPos(this.wingE, this.dragCo, this.crossArea, this.mass) && planeOnGround){ //if the velocity of the plane is greater than the takeoff speed, then take off
       planeOnGround = false;
     }
     
-    float xPixel = metersToPixels(position.x);
-    float yPixel = metersToPixels(position.y);
+    float xPixel = metersToPixels(this.pos.x); //converting results of calculation (in meters) to its pixel representation
+    float yPixel = metersToPixels(this.pos.y);
     
-    if(xPixel > runwayLength && planeOnGround == true) {
+    if(xPixel > runwayLength && planeOnGround == true) { //If plane position is greater than the end of the runway, then the plane has crashed
       this.planeVelocity.x = 0;
       this.planeFlyingSuccesfully = false;
-      
-    } else {  
+      this.takeOffFail(); //generate rubble and fire
+    } else {  //If the plane is flying normally, then continue drawing the plane
       this.drawPlane(xPixel, yPixel);  
     }  
     
-    if(!this.planeFlyingSuccesfully){
-      this.takeOffFail();
-    }
   }
   
   void takeOffFail() { //Method for when the plane does not take off successfully

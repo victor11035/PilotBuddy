@@ -17,7 +17,7 @@ Rubble[] rubbleObjects = new Rubble[10];
 
 
 //Creating the plane object
-Plane myPlane = new Plane(1, 600, 400, 1000, 0.05, 20); //cross-sectional area (m^2), maximum velocity (m/s), mass (kg), thrust (N), drag coeff, lift-to-drag ratio (L/D). (Values of cessna 172) One pixel is 10m
+Plane myPlane = new Plane(1, 400, 1000, 0.05, 20); //cross-sectional area (m^2), maximum velocity (m/s), mass (kg), thrust (N), drag coeff, lift-to-drag ratio (L/D). (Values of cessna 172) One pixel is 10m
 
 //Setup to set size of the window and create GUI
 void setup() {
@@ -29,19 +29,17 @@ void setup() {
   }
 }
 
-void valuesUpdated(){//updated all the values of the plane when changed in the GUI
- this.myPlane.mass = Mass_Slide.getValueF();
- 
- this.myPlane.thrust = Thrust_Slide.getValueF();
+void valuesUpdated(){//Update plane values based off GUI sliders
 
- 
+ myPlane.mass = Mass_Slide.getValueF(); 
+ myPlane.thrust = Thrust_Slide.getValueF();
  runwayLength =Drag_Slide.getValueI();
- this.myPlane.planeFlyingSuccesfully = true;
- this.myPlane.dragCo = DragCo_Slide.getValueF();
- this.myPlane.wingE = WingE_Slide.getValueI();
+ myPlane.planeFlyingSuccesfully = true;
+ myPlane.crossArea = MaxV_Slide.getValueF();
+ myPlane.dragCo = DragCo_Slide.getValueF();
+ myPlane.wingE = WingE_Slide.getValueI();
  
-
-  resetValues();
+  resetValues(); //reset the simulation
 }
 
 //Draw function to animate the plane
