@@ -54,7 +54,7 @@ void valuesUpdated(){//updated all the values of the plane when changed in the G
    
   running = false;
   Play_Button.setText("PLAY");
-  resetValues();
+  valuesReset();
 }
 
 void valuesReset(){
