@@ -43,7 +43,16 @@ public void WingE_Dragged(GCustomSlider source, GEvent event){
 } //_CODE_:WingE_Slide:369871:
 
 public void Play_Clicked(GButton source, GEvent event) { //_CODE_:Play_Button:560141:
-  println("Play_Button - GButton >> GEvent." + event + " @ " + millis());
+if (running = false){
+  loop();
+  Play_Button.setText("STOP");
+  running = true;
+}
+else{
+ noLoop();
+  Play_Button.setText("STOP");
+  running = false;
+}
 } //_CODE_:Play_Button:560141:
 
 public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403866:
