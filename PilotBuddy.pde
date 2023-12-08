@@ -35,7 +35,7 @@ void valuesUpdated(){//updated all the values of the plane when changed in the G
  this.myPlane.thrust = Thrust_Slide.getValueF();
 
  
- runwayLength =Rway_Slide.getValueI();
+ runwayLength =Drag_Slide.getValueI();
  this.myPlane.planeFlyingSuccesfully = true;
  this.myPlane.dragCo = DragCo_Slide.getValueF();
  this.myPlane.wingE = WingE_Slide.getValueI();
