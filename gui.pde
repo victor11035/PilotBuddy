@@ -127,7 +127,7 @@ public void createGUI(){
   Label_Weight.setOpaque(false);
   Mass_Slide = new GCustomSlider(window1, 50, 20, 100, 40, "grey_blue");
   Mass_Slide.setShowValue(true);
-  Mass_Slide.setLimits(400.0, 10.0, 10000.0);
+  Mass_Slide.setLimits(400.0, 10.0, 2000.0);
   Mass_Slide.setNumberFormat(G4P.DECIMAL, 2);
   Mass_Slide.setOpaque(false);
   Mass_Slide.addEventHandler(this, "Mass_Dragged");
@@ -157,7 +157,7 @@ public void createGUI(){
   Label_DragCo.setOpaque(false);
   DragCo_Slide = new GCustomSlider(window1, 50, 200, 100, 40, "grey_blue");
   DragCo_Slide.setShowValue(true);
-  DragCo_Slide.setLimits(0.05, 0.0, 0.1);
+  DragCo_Slide.setLimits(0.05, 0.01, 0.1);
   DragCo_Slide.setNumberFormat(G4P.DECIMAL, 2);
   DragCo_Slide.setOpaque(false);
   DragCo_Slide.addEventHandler(this, "DragCo_Dragged");
@@ -173,7 +173,7 @@ public void createGUI(){
   WingE_Slide.addEventHandler(this, "WingE_Dragged");
   MaxV_Slide = new GCustomSlider(window1, 50, 320, 100, 40, "grey_blue");
   MaxV_Slide.setShowValue(true);
-  MaxV_Slide.setLimits(1, 0, 30);
+  MaxV_Slide.setLimits(1, 0.1, 10);
   MaxV_Slide.setNumberFormat(G4P.DECIMAL, 2);
   MaxV_Slide.setOpaque(false);
   MaxV_Slide.addEventHandler(this, "MaxV_Dragged");
