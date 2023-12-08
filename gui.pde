@@ -95,17 +95,19 @@ public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403
 void resetValues(){
 
 //set plane and buttons back to original state
-    noLoop();
-    running = false;
+    noLoop(); //noLoop so that the animation stops happening
+    running = false; 
     Play_Button.setText("PLAY");
     myPlane.pos = new PVector (0,0);
     myPlane.planeVelocity = new PVector(0, 0);
     myPlane.planeOnGround = true;
     myPlane.planeFlyingSuccesfully = true;
-    for(int i = 0; i < rubbleObjects.length; i++) {
+    for(int i = 0; i < rubbleObjects.length; i++) { //sets the rubble back to their initial position using a for loop
       this.rubbleObjects[i].rubbleX = runwayLength;
       this.rubbleObjects[i].rubbleY = rubbleGroundPosition;
     }
+    explosionWidth = 1;
+    explosionHeight = 1;
     redraw();
 }
 
