@@ -31,20 +31,17 @@ public void Trust_Dragged(GCustomSlider source, GEvent event) { //_CODE_:Thrust_
 } 
 
 
-
-public void DragCo_Dragged(GCustomSlider source, GEvent event) { //_CODE_:DragCo_Slide:707866:
- valuesUpdated();
-  valuesReset();
-} //_CODE_:DragCo_Slide:707866:
-
-public void WingE_Dragged(GCustomSlider source, GEvent event) { //_CODE_:WingE_Slide:369871:
-
+  println("WingE_Slide - GCustomSlider >> GEvent." + event + " @ " + millis());
+} //_CODE_:WingE_Slide:369871:
 
 public void Play_Clicked(GButton source, GEvent event) { //_CODE_:Play_Button:560141:
 
 
-public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403866:
+public void Restart_Clicked(GButton source, GEvent event) } //_CODE_:Play_Button:560141:
 
+public void Restart_Clicked(GButton source, GEvent event) { //_CODE_:Restart:403866:
+  println("Restart - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:Restart:403866:
 
 public void CrossA_Dragged(GCustomSlider source, GEvent event) { //_CODE_:CrossA_Slide:392257:
  valuesUpdated();
