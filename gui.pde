@@ -147,7 +147,7 @@ public void createGUI(){
   Label_Drag.setOpaque(false);
   Drag_Slide = new GCustomSlider(window1, 50, 140, 100, 40, "grey_blue");
   Drag_Slide.setShowValue(true);
-  Drag_Slide.setLimits(1000, 100, 1500);
+  Drag_Slide.setLimits(1000, 100, 1300);
   Drag_Slide.setNumberFormat(G4P.INTEGER, 0);
   Drag_Slide.setOpaque(false);
   Drag_Slide.addEventHandler(this, "Drag_Dragged");
