@@ -2,6 +2,7 @@ PVector runwayPlaneVelocity(PVector prevVel, float thrust, float dragCo, float c
   PVector velocity = new PVector(0, 0);
   velocity = prevVel;
   float acceleration = 0;
+  acceleration = (10*thrust - 0.5*1.3*dragCo*crossArea*pow(prevVel.x, 2))/mass; //Calculate acceleration by dividing net force by mass. Net force is calculated by rearranging the drag force equation and plane thrust.
   
   //calculate velocity from acceleration
   velocity.x = acceleration/60+prevVel.x; //divide by 60 because anomation is running at 60fps. This equation is a rearranged version of acceleration = change in velocity*time
